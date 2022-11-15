@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+</head>
+<body>
+  <div id="app" style="padding-right: 40px; padding-left: 40px; padding-bottom: 50px;">
+    <!--主窗口-->
+            <el-card style="padding-right: 20px; padding-left: 20px; padding-bottom: 40px;" header="待办事项">
+                <el-row>
+                    <el-col :xs="24" :md="12">
+                        <el-input placeholder="请输入条件" v-model="keyword" class="input-with-select">
+                            <el-button slot="append" icon="el-icon-search"  @click="query"></el-button>
+                          </el-input>
+                    </el-col>
+                    <el-col style="left: 0px; padding-left: 20px;" :xs="24" :md="12" v-if="true">
+                        <el-button @click="showAdd()">添加</el-button>
+                    </el-col>
+                </el-row>
+                <el-table style="top: 20px;" :data="todos" :fit="true" :show-header="true">
+                    <el-table-column prop="id" label="Id">
+                    </el-table-column>
+                    <el-table-column prop="name" label="事项">
+                    </el-table-column>
+                    <el-table-column prop="complete" label="状态">
+                        <template slot-scope="scope">
+                            <el-tag v-show="scope.row.complete" style="color: green;">已完成</el-tag>
+                            <el-tag v-show="!scope.row.complete">未完成</el-tag>
+                        </template>
+                    </el-table-column>
+                    <el-table-column label="操作" fixed="right" width="200px">
+                        <template slot-scope="scope">
+                            <el-button mc-type="column-el-button" size="mini" type="primary" @click="showEdit(scope.row)">编辑</el-button>
+                            <el-button mc-type="column-el-button" size="mini" type="danger" @click="deleteTodo(scope.row)">删除</el-button>
+                        </template>
+                    </el-table-column>
+                </el-table>
+            </el-card>
+    
+
+    <!--修改事项对话框-->
+    <el-dialog title="修改事项" :visible.async="dialogVisible" width="30%" @close="dialogVisible=false">
+        <el-form label-width="50px">
+            <el-form-item label="Id">
+                <el-input type="number" v-model.number="currentTodo.id" placeholder="请输入内容">
+                </el-input>
+            </el-form-item>
+            <el-form-item label="事项">
+                <el-input v-model="currentTodo.name" placeholder="请输入内容">
+                </el-input>
+            </el-form-item>
+            <el-form-item label="状态">
+                <el-switch v-model="currentTodo.complete"
+                active-color="#13ce66" inactive-color="#ff4949"> </el-switch>
+                <span v-show="currentTodo.complete">已完成</span>
+                <span v-show="!currentTodo.complete">未完成</span>
+            </el-form-item>
+            <el-form-item style="text-align: right;">
+                <el-button @click="dialogVisible=false">取 消</el-button>
+                <el-button type="primary" @click="saveTodo()">确 定</el-button>
+            </el-form-item>
+        </el-form>
+    </el-dialog>
+  </div>
+</body>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script src="js/todo.js"></script>
+
+</html>
