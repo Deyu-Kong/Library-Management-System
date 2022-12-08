@@ -1,0 +1,10 @@
+edu\whu\demo\service\PaperService.class
+edu\whu\demo\controller\PageController.class
+edu\whu\DemoApplication.class
+edu\whu\demo\controller\PaperController.class
+edu\whu\demo\controller\BookController.class
+edu\whu\demo\entity\PaperItem.class
+edu\whu\demo\entity\BookItem.class
+edu\whu\demo\dao\PaperJPARepository.class
+edu\whu\demo\service\BookService.class
+edu\whu\demo\dao\BookJPARepository.class

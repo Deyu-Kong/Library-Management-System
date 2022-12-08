@@ -1,0 +1,5 @@
+edu\whu\demo\dao\UserRepsitory.class
+edu\whu\demo\dao\RoleRepository.class
+edu\whu\demo\entity\User.class
+edu\whu\demo\DemoApplication.class
+edu\whu\demo\entity\Role.class
