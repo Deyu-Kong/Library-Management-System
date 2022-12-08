@@ -1,5 +1,6 @@
 package edu.whu.demo.entity;
 
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -8,6 +9,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.sql.Date;
 
 /**
  * @author 孔德昱
@@ -20,12 +22,21 @@ import javax.persistence.Id;
 @ApiModel(description="论文实体")
 public class PaperItem {
     @Id
-    @ApiModelProperty("待办事项编号")
-    long id;
+    @ApiModelProperty("论文ID")
+    long paperId;
 
-    @ApiModelProperty("待办事项名称")
-    String name;
+    @ApiModelProperty("论文题目")
+    String paperTitle;
 
-    @ApiModelProperty("是否完成")
-    boolean complete;
+    @ApiModelProperty("发表时间")
+    Date paperDate;
+
+    @ApiModelProperty("论文作者")
+    String paperAuthor;
+
+    @ApiModelProperty("上传者")
+    String paperUploader;
+
+    @ApiModelProperty("上传日期")
+    Date uploadDate;
 }

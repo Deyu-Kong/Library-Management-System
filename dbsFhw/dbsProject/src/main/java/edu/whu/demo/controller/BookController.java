@@ -14,7 +14,7 @@ import java.util.List;
 
 /**
  * @author jiaxy
- * 待办事项控制器类。 负责提供API。可以在这个类中做请求响应数据的转换、验证，但不要写具体业务逻辑。
+ * 图书控制器类。 负责提供API。可以在这个类中做请求响应数据的转换、验证，但不要写具体业务逻辑。
  */
 @Api(description = "图书管理器")
 @RestController
@@ -24,9 +24,9 @@ public class BookController {
     BookService bookService;
 
     // get: localhost:8088/books/1
-    @ApiOperation("根据Id查询待办事项")
+    @ApiOperation("根据Id查询图书")
     @GetMapping("/{id}")
-    public ResponseEntity<BookItem> getbook(@ApiParam("待办事项Id")@PathVariable long id){
+    public ResponseEntity<BookItem> getbook(@ApiParam("图书Id")@PathVariable long id){
         BookItem result = bookService.getBook(id);
         if(result==null) {
             return ResponseEntity.noContent().build();
@@ -38,7 +38,7 @@ public class BookController {
     // get: localhost:8088/books
     // get: localhost:8088/books?name=作业
     // get: localhost:8088/books?name=作业&&complete=true
-    @ApiOperation("根据条件查询待办事项")
+    @ApiOperation("根据条件查询图书")
     @GetMapping("")
     public ResponseEntity<List<BookItem>> findbooks(@ApiParam("书籍名称")String name, @ApiParam("出版日期")Date date,
                                                     @ApiParam("作者")String author, @ApiParam("出版商")String publisher){
@@ -46,7 +46,7 @@ public class BookController {
         return ResponseEntity.ok(result);
     }
 
-    @ApiOperation("添加待办事项")
+    @ApiOperation("添加图书")
     @PostMapping("")
     public ResponseEntity<String> addbook(@RequestBody BookItem book){
         try {
@@ -58,14 +58,14 @@ public class BookController {
     }
 
 
-    @ApiOperation("修改待办事项")
+    @ApiOperation("修改图书")
     @PutMapping("/{id}")
     public ResponseEntity<Void> updatebook(@PathVariable long id,@RequestBody BookItem book){
         bookService.updateBook(id,book);
         return ResponseEntity.ok().build();
     }
 
-    @ApiOperation("删除待办事项")
+    @ApiOperation("删除图书")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletebook(@PathVariable long id){
         bookService.deleteBook(id);
