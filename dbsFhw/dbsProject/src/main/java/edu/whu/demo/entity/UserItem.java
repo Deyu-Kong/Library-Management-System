@@ -28,7 +28,7 @@ public class UserItem {
     @ApiModelProperty("用户姓名")
     String userName;
     @ApiModelProperty("用户身份")
-    @Column(columnDefinition = "VARCHAR(30) CHECK (userIdentity IN ('学生', '老师'))")
+    @Column(columnDefinition = "VARCHAR(30) CHECK (user_identity IN ('学生', '老师'))")
     String userIdentity;
 
 
