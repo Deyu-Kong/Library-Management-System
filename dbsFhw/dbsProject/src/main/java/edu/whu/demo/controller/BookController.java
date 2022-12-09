@@ -41,8 +41,9 @@ public class BookController {
     @ApiOperation("根据条件查询图书")
     @GetMapping("")
     public ResponseEntity<List<BookItem>> findbooks(@ApiParam("书籍名称")String name, @ApiParam("出版日期")Date date,
-                                                    @ApiParam("作者")String author, @ApiParam("出版商")String publisher){
-        List<BookItem> result = bookService.findBooks(name, date, author, publisher);
+                                                    @ApiParam("作者")String author, @ApiParam("出版商")String publisher,
+                                                    @ApiParam("评分")Double rating, @ApiParam("书籍图片")String imgUrl){
+        List<BookItem> result = bookService.findBooks(name, date, author, publisher, rating, imgUrl);
         return ResponseEntity.ok(result);
     }
 

@@ -1,0 +1,9 @@
+
+N
+java:S1874"3Remove this use of "description"; it is deprecated.(·¹·üÿÿÿÿ
+[
+java:S4684-"@Replace this persistent entity with a simple POJO or DTO object.(˜••Âøÿÿÿÿ
+[
+java:S46849"@Replace this persistent entity with a simple POJO or DTO object.(‹¡±Çûÿÿÿÿ
+@
+java:S1128"*Remove this unused import 'java.sql.Date'.(ÙÀ½Ê

@@ -5,9 +5,12 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Check;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import java.sql.Date;
 
 @Entity
@@ -32,6 +35,14 @@ public class BookItem {
 
     @ApiModelProperty("出版商")
     String publisherName;
+
+    @ApiModelProperty("评分")
+            @Min(0)
+            @Max(10)
+    Double rating;
+
+    @ApiModelProperty("图片链接")
+    String imgUrl;
 
 //    @ApiModelProperty("是否完成")
 //    boolean complete;

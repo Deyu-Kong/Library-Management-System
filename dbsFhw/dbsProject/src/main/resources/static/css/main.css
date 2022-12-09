@@ -33,3 +33,15 @@ iframe{
     height:100%;
     width:100%;
 }
+
+.card{
+    overflow-y: auto;
+}
+
+.my-img{
+    width: 100px;
+    height: 100px;
+    /*.el-image__inner{*/
+    /*    visibility: hidden ;*/
+    /*}*/
+}

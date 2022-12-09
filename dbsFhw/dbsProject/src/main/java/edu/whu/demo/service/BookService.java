@@ -37,7 +37,7 @@ public class BookService {
         bookRepository.deleteById(id);
     }
 
-    public List<BookItem> findBooks(String bookName, Date publicationDate, String authorName, String publisherName) {
+    public List<BookItem> findBooks(String bookName, Date publicationDate, String authorName, String publisherName, Double rating, String imgUrl) {
         //动态构造查询条件，name和complete不为null时作为条件
         Specification<BookItem> specification = (root, query, criteriaBuilder) -> {
             List<Predicate> predicateList = new ArrayList<>();
@@ -52,6 +52,12 @@ public class BookService {
             }
             if(publisherName!=null){
                 predicateList.add(criteriaBuilder.equal(root.get("publisherName"),publisherName));
+            }
+            if(rating != null){
+                predicateList.add(criteriaBuilder.greaterThan(root.get("rating"),rating));
+            }
+            if(imgUrl != null){
+                predicateList.add(criteriaBuilder.equal(root.get(imgUrl),imgUrl));
             }
             Predicate[] predicates = predicateList.toArray(new Predicate[predicateList.size()]);
             return criteriaBuilder.and(predicates);

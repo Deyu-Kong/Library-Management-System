@@ -1,0 +1,13 @@
+
+N
+java:S1874"3Remove this use of "description"; it is deprecated.(‡ã‚Ñşÿÿÿÿ
+[
+java:S46840"@Replace this persistent entity with a simple POJO or DTO object.(¢›…úÿÿÿÿ
+[
+java:S4684:"@Replace this persistent entity with a simple POJO or DTO object.(÷êéïûÿÿÿÿ
+T
+java:S1128"9Remove this unused import 'edu.whu.demo.entity.BookItem'.(Ü¶¥ÿÿÿÿÿ
+O
+java:S1128"9Remove this unused import 'edu.whu.demo.entity.UserItem'.(‹³•ô
+@
+java:S1128"*Remove this unused import 'java.sql.Date'.(ÙÀ½Ê

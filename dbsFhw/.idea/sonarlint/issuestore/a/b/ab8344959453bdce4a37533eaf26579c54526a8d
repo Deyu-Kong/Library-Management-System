@@ -1,0 +1,11 @@
+
+{
+java:S14881"^Immediately return this expression instead of assigning it to the temporary variable "result".(æ¦Ôâ8€†•¶Ï0
+K
+java:S1172 ")Remove this unused method parameter "id".(–È×œùÿÿÿÿ8Ô†•¶Ï0
+[
+java:S1128"9Remove this unused import 'edu.whu.demo.entity.BookItem'.(Ü¶¥ÿÿÿÿÿ8Ş†•¶Ï0
+\
+java:S1128":Remove this unused import 'edu.whu.demo.entity.PaperItem'.(¥Îğ²ûÿÿÿÿ8ß†•¶Ï0
+H
+java:S1128"+Remove this unused import 'java.util.Date'.(¸…¼ü8ß†•¶Ï0
