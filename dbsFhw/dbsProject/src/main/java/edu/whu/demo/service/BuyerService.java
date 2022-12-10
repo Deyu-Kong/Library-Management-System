@@ -38,13 +38,13 @@ public class BuyerService {
         buyerRepository.deleteById(id);
     }
 
-    public List<BuyerItem> findBuyers(long bookId, long userId) {
+    public List<BuyerItem> findBuyers(Long bookId, Long userId) {
         Specification<BuyerItem> specification = (root, query, criteriaBuilder) -> {
             List<Predicate> predicateList = new ArrayList<>();
-            if (bookId != -1) {
+            if (bookId != null) {
                 predicateList.add(criteriaBuilder.equal(root.get("bookId"), bookId));
             }
-            if (userId != -1) {
+            if (userId != null) {
                 predicateList.add(criteriaBuilder.equal(root.get("userId"), userId));
             }
 

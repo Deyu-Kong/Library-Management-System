@@ -21,7 +21,7 @@ public class BuyerItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @ApiModelProperty("买书id")
-    long BuyerId;
+    long buyerId;
     @ApiModelProperty("图书id")
     long bookId;
     @ApiModelProperty("买书人id")

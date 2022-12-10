@@ -39,7 +39,7 @@ public class BuyerController {
     }
     @ApiOperation("根据条件查询买书")
     @GetMapping("")
-    public ResponseEntity<List<BuyerItem>> findbuyers(@ApiParam("图书id")long bookID, @ApiParam("买书人id") long userID){
+    public ResponseEntity<List<BuyerItem>> findbuyers(@ApiParam("图书id")Long bookID, @ApiParam("买书人id") Long userID){
         List<BuyerItem> result = buyerService.findBuyers(bookID, userID);
         return ResponseEntity.ok(result);
     }

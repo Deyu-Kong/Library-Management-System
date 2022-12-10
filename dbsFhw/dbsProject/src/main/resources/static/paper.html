@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -33,7 +33,7 @@
                 </el-table-column>
                 <el-table-column prop="paperAuthor" label="作者">
                 </el-table-column>
-                <el-table-column prop="paperUploader" label="上传者">
+                <el-table-column prop="paperUploaderId" label="上传者ID">
                 </el-table-column>
                 <el-table-column prop="uploadDate" label="上传日期">
                 </el-table-column>
@@ -73,8 +73,8 @@
                     <el-input v-model="currentPaper.paperAuthor" placeholder="请输入内容">
                     </el-input>
                 </el-form-item>
-                <el-form-item label="上传者">
-                    <el-input v-model="currentPaper.paperUploader" placeholder="请输入内容">
+                <el-form-item label="上传者ID">
+                    <el-input v-model="currentPaper.paperUploaderId" placeholder="请输入内容">
                     </el-input>
                 </el-form-item>
                 <el-form-item label="上传日期">

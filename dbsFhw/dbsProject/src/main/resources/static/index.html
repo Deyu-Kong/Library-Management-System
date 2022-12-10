@@ -29,6 +29,20 @@
             document.getElementById("mainPage").src = "paper.html";
             event.preventDefault();
         }
+        function buyer(){
+            document.getElementById("mainPage").contentWindow.location.reload(true);
+
+            //不能使用thymeleaf
+            document.getElementById("mainPage").src = "buyer.html";
+            event.preventDefault();
+        }
+        function user(){
+            document.getElementById("mainPage").contentWindow.location.reload(true);
+
+            //不能使用thymeleaf
+            document.getElementById("mainPage").src = "user.html";
+            event.preventDefault();
+        }
     </script>
 </head>
 <body> <!-- over-flow="hidden">-->
@@ -45,6 +59,14 @@
             <li>
                 <a onclick="paper()" href="javascript:void(0)">
                     <i class="fa fa-paper-plane"></i>论文管理</a>
+            </li>
+            <li>
+                <a onclick="user()" href="javascript:void(0)">
+                    <i class="fa fa-paper-plane"></i>用户管理</a>
+            </li>
+            <li>
+                <a onclick="buyer()" href="javascript:void(0)">
+                    <i class="fa fa-paper-plane"></i>买书管理</a>
             </li>
         </ul>
     </div>

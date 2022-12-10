@@ -1,4 +1,4 @@
-var vue = new Vue({
+    var vue = new Vue({
     el: '#app',
     data: {
         keyword: "",
