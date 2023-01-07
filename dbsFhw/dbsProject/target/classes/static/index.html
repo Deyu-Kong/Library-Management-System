@@ -43,11 +43,11 @@
             document.getElementById("mainPage").src = "user.html";
             event.preventDefault();
         }
-        function statistics(){
+        function info(){
             document.getElementById("mainPage").contentWindow.location.reload(true);
 
             //不能使用thymeleaf
-            document.getElementById("mainPage").src = "statistics.html";
+            document.getElementById("mainPage").src = "info.html";
             event.preventDefault();
         }
     </script>
@@ -76,7 +76,7 @@
                     <i class="fa fa-paper-plane"></i>购书管理</a>
             </li>
             <li>
-                <a onclick="statistics()" href="javascript:void(0)">
+                <a onclick="info()" href="javascript:void(0)">
                     <i class="fa fa-paper-plane"></i>复杂统计</a>
             </li>
         </ul>
