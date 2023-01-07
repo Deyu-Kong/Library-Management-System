@@ -18,7 +18,7 @@ import java.util.List;
 @Service
 public class PaperService {
     @Autowired
-        PaperJPARepository paperRepository;
+    PaperJPARepository paperRepository;
 
     public PaperItem addPaper(PaperItem paper) {
         return paperRepository.saveAndFlush(paper);
