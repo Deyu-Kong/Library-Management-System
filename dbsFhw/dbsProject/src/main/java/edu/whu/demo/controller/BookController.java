@@ -40,10 +40,11 @@ public class BookController {
     // get: localhost:8088/books?name=作业&&complete=true
     @ApiOperation("根据条件查询图书")
     @GetMapping("")
-    public ResponseEntity<List<BookItem>> findbooks(@ApiParam("书籍名称")String name, @ApiParam("出版日期")Date date,
-                                                    @ApiParam("作者")String author, @ApiParam("出版商")String publisher,
-                                                    @ApiParam("评分")Double rating, @ApiParam("书籍图片")String imgUrl){
-        List<BookItem> result = bookService.findBooks(name, date, author, publisher, rating, imgUrl);
+    public ResponseEntity<List<BookItem>> findbooks(@ApiParam("书籍名称")String name, @ApiParam("出版日期(起)")Date startTime,
+                                                    @ApiParam("出版日期(止)")Date endTime, @ApiParam("作者")String author,
+                                                    @ApiParam("出版商")String publisher, @ApiParam("评分(下限)")Double ratingLow,
+                                                    @ApiParam("评分(上限)")Double ratingHigh, @ApiParam("书籍图片")String imgUrl){
+        List<BookItem> result = bookService.findBooks(name, startTime, endTime, author, publisher, ratingLow, ratingHigh, imgUrl);
         return ResponseEntity.ok(result);
     }
 

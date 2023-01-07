@@ -2,6 +2,6 @@
 I
 java:S1874"3Remove this use of "description"; it is deprecated.(šÔÜú
 [
-java:S46844"@Replace this persistent entity with a simple POJO or DTO object.(º½±øÿÿÿÿ
+java:S46845"@Replace this persistent entity with a simple POJO or DTO object.(º½±øÿÿÿÿ
 [
-java:S4684@"@Replace this persistent entity with a simple POJO or DTO object.(ğ­¢áùÿÿÿÿ
+java:S4684A"@Replace this persistent entity with a simple POJO or DTO object.(ğ­¢áùÿÿÿÿ

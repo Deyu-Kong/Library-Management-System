@@ -37,24 +37,26 @@ public class BookService {
         bookRepository.deleteById(id);
     }
 
-    public List<BookItem> findBooks(String bookName, Date publicationDate, String authorName, String publisherName, Double rating, String imgUrl) {
+    public List<BookItem> findBooks(String bookName, Date startDate, Date endDate, String authorName, String publisherName, Double ratingLow, Double ratingHigh, String imgUrl) {
         //动态构造查询条件，name和complete不为null时作为条件
         Specification<BookItem> specification = (root, query, criteriaBuilder) -> {
             List<Predicate> predicateList = new ArrayList<>();
             if (bookName != null) {
                 predicateList.add(criteriaBuilder.like(root.get("bookName"), "%" + bookName + "%"));
             }
-            if (publicationDate != null) {
-                predicateList.add(criteriaBuilder.equal(root.get("publicationDate"), publicationDate));
+            if (startDate != null && endDate != null) {
+                predicateList.add(criteriaBuilder.greaterThanOrEqualTo(root.get("publicationDate"), startDate));
+                predicateList.add(criteriaBuilder.lessThanOrEqualTo(root.get("publicationDate"), endDate));
             }
             if (authorName!=null){
-                predicateList.add(criteriaBuilder.equal(root.get("authorName"),authorName));
+                predicateList.add(criteriaBuilder.like(root.get("authorName"),"%" + authorName + "%"));
             }
             if(publisherName!=null){
-                predicateList.add(criteriaBuilder.equal(root.get("publisherName"),publisherName));
+                predicateList.add(criteriaBuilder.like(root.get("publisherName"),"%" + publisherName + "%"));
             }
-            if(rating != null){
-                predicateList.add(criteriaBuilder.greaterThan(root.get("rating"),rating));
+            if(ratingLow != null && ratingHigh !=null){
+                predicateList.add(criteriaBuilder.greaterThanOrEqualTo(root.get("rating"),ratingLow));
+                predicateList.add(criteriaBuilder.lessThanOrEqualTo(root.get("rating"),ratingHigh));
             }
             if(imgUrl != null){
                 predicateList.add(criteriaBuilder.equal(root.get(imgUrl),imgUrl));

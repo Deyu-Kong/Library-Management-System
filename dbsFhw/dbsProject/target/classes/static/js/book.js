@@ -1,7 +1,12 @@
 var vue = new Vue({
     el: '#app',
     data: {
-        keyword: "",
+        bBookname: "",
+        bAuthor: "",
+        bPublishTime: "",
+        bPublisher: "",
+        bRateLow: "",
+        bRateHigh: "",
         books: [], //查询结果
         currentBook: {}, //当前编辑的事项
         dialogVisible: false, //对话框是否显示
@@ -14,9 +19,51 @@ var vue = new Vue({
         detailVisible: false
     },
     methods: {
-        query: function (keyword) {
-            var path = '/books';
-            if (this.keyword != "") path = path + "?name=" + this.keyword;
+        query: function (bBookname,bAuthor) {
+            var path = '/books'
+            var flag = false
+            if (this.bBookname && this.bBookname != ""){
+                path = path + "?name=" + this.bBookname
+                if(!flag) flag = true;
+            }
+            if(this.bAuthor && this.bAuthor != ""){
+                if(flag) path = path + "&&"
+                else{
+                    flag = true;
+                    path = path + "?"
+                }
+                path = path + "author=" +this.bAuthor
+            }
+            var startTime
+            var endTime
+            if(this.bPublishTime && this.bPublishTime != ""){
+                startTime = this.bPublishTime[0];
+                endTime = this.bPublishTime[1];
+                if(flag) path = path + "&&"
+                else{
+                    flag = true;
+                    path = path + "?"
+                }
+                path = path + "startTime=" + startTime + "&&endTime=" + endTime
+            }
+            if(this.bPublisher && this.bPublisher != ""){
+                if(flag) path = path + "&&"
+                else{
+                    flag = true;
+                    path = path + "?"
+                }
+                path = path + "publisher=" +this.bPublisher
+            }
+            if(this.bRateLow && this.bRateHigh && this.bRateLow != "" || this.bRateHigh != ""){
+                if(!this.bRateLow) this.bRateLow = 0
+                if(!this.bRateHigh) this.bRateHigh = 10
+                if(flag) path = path + "&&"
+                else{
+                    flag = true;
+                    path = path + "?"
+                }
+                path = path + "ratingLow=" + this.bRateLow + "&&ratingHigh=" + this.bRateHigh;
+            }
             var self = this
             axios.get(path)
                 .then(response =>{
@@ -24,6 +71,7 @@ var vue = new Vue({
                     this.totalCount =  this.books.length;
                 })
                 .catch(e => self.$message.error(e.response.data))
+            this.currentPage = 1
         },
         deleteBook: function (book) {
             var self = this
@@ -71,6 +119,15 @@ var vue = new Vue({
             this.imgUrl=this.currentBook.imgUrl
             if(this.imgUrl == null) this.imgUrl = "https://img.alicdn.com/tfs/TB161Wer1uSBuNjy1XcXXcYjFXa-2528-1266.png"
             if(!this.dialogVisible) this.detailVisible=true
+        },
+        clearSiev(){
+            this.bRateHigh = ""
+            this.bRateLow = ""
+            this.bPublisher = ""
+            this.bBookname = ""
+            this.bPublishTime = ""
+            this.bAuthor = ""
+            this.query()
         }
     }
 })

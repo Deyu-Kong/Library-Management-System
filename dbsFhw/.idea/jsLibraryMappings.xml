@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-    <file url="file://$PROJECT_DIR$/dbsProject" libraries="{element-ui}" />
+    <file url="file://$PROJECT_DIR$" libraries="{Node.js Core}" />
+    <file url="file://$PROJECT_DIR$/dbsProject" libraries="{Node.js Core}" />
+    <file url="file://$PROJECT_DIR$/jpaDemo" libraries="{Node.js Core}" />
   </component>
 </project>
