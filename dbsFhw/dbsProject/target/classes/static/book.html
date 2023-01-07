@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+</head>
+<body>
+
+<div id="div_main">
+    <div id="app" style="padding-right: 0; padding-left: 0; padding-bottom: 0;">
+        <!--主窗口-->
+        <el-card style="padding-right: 20px; padding-left: 20px; padding-bottom: 40px;" header="图书管理">
+            <el-row>
+                <el-col :xs="24" :md="12">
+                    <el-input placeholder="请输入条件" v-model="keyword" class="input-with-select">
+                        <el-button slot="append" icon="el-icon-search" @click="query"></el-button>
+                    </el-input>
+                </el-col>
+                <el-col style="left: 0px; padding-left: 20px;" :xs="24" :md="12" v-if="true">
+                    <el-button @click="showAdd()">添加</el-button>
+                </el-col>
+            </el-row>
+            <el-table :data="books.slice((currentPage-1)*PageSize,currentPage*PageSize)" height="600" :fit="true" :show-header="true"
+                      @row-click="(row)=>showImg(row)">
+                <el-table-column prop="id" label="图书ID">
+                </el-table-column>
+                <el-table-column prop="bookName" label="书名">
+                </el-table-column>
+                <el-table-column prop="publicationDate" label="出版日期">
+<!--                    <template slot-scope="scope">-->
+<!--                        <el-tag v-show="scope.row.complete" style="color: green;">已完成</el-tag>-->
+<!--                        <el-tag v-show="!scope.row.complete">未完成</el-tag>-->
+<!--                    </template>-->
+                </el-table-column>
+                <el-table-column prop="authorName" label="作者">
+                </el-table-column>
+                <el-table-column prop="publisherName" label="出版商">
+                </el-table-column>
+                <el-table-column prop="rating" label="评分">
+                </el-table-column>
+                <el-table-column label="操作" fixed="right" width="200px">
+                    <template slot-scope="scope">
+                        <el-button mc-type="column-el-button" size="mini" type="primary" @click="showEdit(scope.row)">编辑
+                        </el-button>
+                        <el-button mc-type="column-el-button" size="mini" type="danger" @click="deleteBook(scope.row)">
+                            删除
+                        </el-button>
+                    </template>
+                </el-table-column>
+            </el-table>
+            <div class="tabListPage">
+                <el-pagination @size-change="handleSizeChange"
+                               @current-change="handleCurrentChange"
+                               :current-page="currentPage"
+                               :page-sizes="pageSizes"
+                               :page-size="PageSize" layout="total, sizes, prev, pager, next, jumper"
+                               :total="totalCount">
+                </el-pagination>
+            </div>
+        </el-card>
+
+        <!--修改事项对话框-->
+        <el-dialog title="修改事项" :visible.async="dialogVisible" width="40%" @close="dialogVisible=false">
+            <el-form label-width="100px">
+                <el-form-item label="图书Id">
+                    <el-input type="number" v-model.number="currentBook.id" placeholder="请输入内容">
+                    </el-input>
+                </el-form-item>
+                <el-form-item label="书名">
+                    <el-input v-model="currentBook.bookName" placeholder="请输入内容">
+                    </el-input>
+                </el-form-item>
+                <el-form-item label="出版日期">
+                    <el-date-picker
+                            v-model="currentBook.publicationDate"
+                            type="date"
+                            placeholder="选择日期"
+                            align="right">
+                    </el-date-picker>
+<!--                    <el-switch v-model="currentBook.complete"-->
+<!--                               active-color="#13ce66" inactive-color="#ff4949"></el-switch>-->
+<!--                    <span v-show="currentBook.complete">已完成</span>-->
+<!--                    <span v-show="!currentBook.complete">未完成</span>-->
+                </el-form-item>
+                <el-form-item label="作者">
+                    <el-input v-model="currentBook.authorName" placeholder="请输入内容">
+                    </el-input>
+                </el-form-item>
+                <el-form-item label="出版商">
+                    <el-input v-model="currentBook.publisherName" placeholder="请输入内容">
+                    </el-input>
+                </el-form-item>
+                <el-form-item label="评分">
+                    <el-input v-model="currentBook.rating" placeholder="请输入内容">
+                    </el-input>
+                </el-form-item>
+                <el-form-item style="text-align: right;">
+                    <el-button @click="dialogVisible=false">取 消</el-button>
+                    <el-button type="primary" @click="saveBook()">确 定</el-button>
+                </el-form-item>
+            </el-form>
+        </el-dialog>
+
+        <el-dialog title="书籍信息" :visible.async="detailVisible" width="40%" @close="detailVisible=false">
+            <el-image class="my-img" v-if="imgUrl" ref="imgUrl" :src="imgUrl" :previe-src-list="srcList"></el-image>
+<!--            <el-form label-width="100px">-->
+<!--            </el-form>-->
+        </el-dialog>
+    </div>
+</div>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<script src="js/book.js"></script>
+
+</html>
