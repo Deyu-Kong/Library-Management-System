@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -25,7 +26,7 @@ public class InfoController {
     @Autowired
     InfoService infoService;
 
-    @ApiOperation("根据Id查询图书")
+    @ApiOperation("查询全局信息")
     @GetMapping("/global")
     public ResponseEntity<Map<String, Integer>> getGlobalInfo(){
         Map<String,Integer>map=new HashMap<>();
@@ -35,12 +36,18 @@ public class InfoController {
         return ResponseEntity.ok(map);
     }
 
-    @ApiOperation("根据Id查询图书")
+    @ApiOperation("查询特定用户的统计信息")
     @GetMapping("/user/{userName}")
-    public ResponseEntity<Map<String, Integer>> getUserInfo(@PathVariable("userName") String userName){
+    public ResponseEntity<Map<String, Integer>> getUserInfoByName(@PathVariable("userName") String userName){
         Map<String,Integer>map=new HashMap<>();
         map.put("buyCount",infoService.getBuyCount(userName));
         map.put("uploadCount", infoService.getUploadCount(userName));
         return ResponseEntity.ok(map);
+    }
+
+    @ApiOperation("查询图书统计信息")
+    @GetMapping("/book")
+    public ResponseEntity<Map<String, List<String>>> getBookInfo(){
+        return ResponseEntity.ok(infoService.getScoreDist());
     }
 }
