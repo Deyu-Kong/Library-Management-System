@@ -3,7 +3,7 @@ var vue = new Vue({
     data: {
         keyword: "",
         buyers: [], //查询结果
-        currentBuyer: {}, //当前编辑的事项
+        currentBuyer: {book:{},user:{}}, //当前编辑的事项
         dialogVisible: false, //对话框是否显示
         editMode: false  //当前是否是编辑模式（还是添加模式）
     },
@@ -30,7 +30,8 @@ var vue = new Vue({
         showAdd: function (buyer) {
             this.dialogVisible = true
             this.editMode = false;
-            this.currentBuyer = {complete: false}
+            // this.currentBuyer = {complete: false}
+            this.currentBuyer = {book:{},user:{},complete: false}
         },
         saveBuyer: function () {
             var self = this

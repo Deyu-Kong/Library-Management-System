@@ -1,19 +1,24 @@
-    var vue = new Vue({
+var vue = new Vue({
     el: '#app',
     data: {
         keyword: "",
         papers: [], //查询结果
-        currentPaper: {}, //当前编辑的事项
+        currentPaper: {uploader:{}}, //当前编辑的事项
         dialogVisible: false, //对话框是否显示
         editMode: false  //当前是否是编辑模式（还是添加模式）
     },
     methods: {
         query: function (keyword) {
             var path = '/papers';
-            if (this.keyword != "") path = path + "?paperTitle=" + this.keyword;
+            if (this.keyword !== "") path = path + "?paperTitle=" + this.keyword;
             var self = this
             axios.get(path)
-                .then(response => self.papers = response.data)
+                .then(
+                    response => {
+                        self.papers = response.data;
+                        console.log(self.papers);
+                    }
+                )
                 .catch(e => self.$message.error(e.response.data))
         },
         deletePaper: function (paper) {
@@ -26,11 +31,13 @@
             this.dialogVisible = true
             this.editMode = true;
             this.currentPaper = Object.assign({}, paper)
+            console.log(this.currentPaper)
         },
         showAdd: function (paper) {
             this.dialogVisible = true
             this.editMode = false;
-            this.currentPaper = {complete: false}
+            // this.currentPaper = {complete: false}
+            this.currentPaper = {uploader:{},complete: false}
         },
         savePaper: function () {
             var self = this

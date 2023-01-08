@@ -6,6 +6,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -34,4 +35,12 @@ public class InfoController {
         return ResponseEntity.ok(map);
     }
 
+    @ApiOperation("根据Id查询图书")
+    @GetMapping("/user/{userName}")
+    public ResponseEntity<Map<String, Integer>> getUserInfo(@PathVariable String userName){
+        Map<String,Integer>map=new HashMap<>();
+        map.put("buyCount",infoService.getBuyCount(userName));
+        map.put("uploadCount", infoService.getUploadCount(userName));
+        return ResponseEntity.ok(map);
+    }
 }

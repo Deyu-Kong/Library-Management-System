@@ -23,9 +23,9 @@
             <el-table style="top: 20px;" :data="buyers" :fit="true" :show-header="true">
                 <el-table-column prop="buyerId" label="买书ID">
                 </el-table-column>
-                <el-table-column prop="bookId" label="图书ID">
+                <el-table-column prop="book.id" label="图书ID">
                 </el-table-column>
-                <el-table-column prop="userId" label="用户ID  ">
+                <el-table-column prop="user.userId" label="用户ID  ">
                     <!--                    <template slot-scope="scope">-->
                     <!--                        <el-tag v-show="scope.row.complete" style="color: green;">已完成</el-tag>-->
                     <!--                        <el-tag v-show="!scope.row.complete">未完成</el-tag>-->
@@ -52,11 +52,11 @@
                     </el-input>
                 </el-form-item>
                 <el-form-item label="图书Id">
-                    <el-input type="number" v-model.number="currentBuyer.bookId" placeholder="请输入内容">
+                    <el-input type="number" v-model.number="currentBuyer.book.id" placeholder="请输入内容">
                     </el-input>
                 </el-form-item>
                 <el-form-item label="用户Id">
-                    <el-input type="number" v-model.number="currentBuyer.userId" placeholder="请输入内容">
+                    <el-input type="number" v-model.number="currentBuyer.user.userId" placeholder="请输入内容">
                     </el-input>
                 </el-form-item>
 

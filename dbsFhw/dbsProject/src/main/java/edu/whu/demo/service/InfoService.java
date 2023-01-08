@@ -32,4 +32,12 @@ public class InfoService {
     public Integer getUserCount(){
         return userRepository.getUserCount();
     }
+
+    public Integer getBuyCount(String userName){
+        return -1;
+    }
+
+    public Integer getUploadCount(String userName){
+        return -1;
+    }
 }

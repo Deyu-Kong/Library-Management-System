@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <title>统计信息</title>
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
-
 </head>
 <body>
 <div id="div_main">
     <div id="app" style="padding-right: 0; padding-left: 0; padding-bottom: 0;">
         <el-tabs v-model="activeName2" type="card" @tab-click="handleClick">
             <el-tab-pane label="全局统计信息" name="globalInfo">
-                <ol>
+                <el-row>
+                <ul>
                     <li>
                         图书总数：{{bookCount}}
                     </li>
@@ -21,13 +21,32 @@
                     <li>
                         用户总数：{{userCount}}
                     </li>
-                </ol>
+                </ul>
+                </el-row>
             </el-tab-pane>
             <el-tab-pane label="图书统计信息" name="second">
                 图书统计信息
             </el-tab-pane>
             <el-tab-pane label="论文统计信息" name="third">论文统计信息</el-tab-pane>
-            <el-tab-pane label="用户统计信息" name="fourth">用户统计信息</el-tab-pane>
+            <el-tab-pane label="用户统计信息" name="fourth">
+                <el-row>
+                    <el-col :xs="24" :md="12">
+                        <el-input placeholder="请输入查询用户名" v-model="userName" size="mini" style="width: 80%">
+                            <el-button slot="append" icon="el-icon-search" @click="query"></el-button>
+                        </el-input>
+                    </el-col>
+                </el-row>
+                <el-row v-if="showUserInfo">
+                    <ul>
+                        <li>
+                            用户买书数：{{buyCount}}
+                        </li>
+                        <li>
+                            上传论文数：{{uploadCount}}
+                        </li>
+                    </ul>
+                </el-row>
+            </el-tab-pane>
         </el-tabs>
     </div>
 </div>

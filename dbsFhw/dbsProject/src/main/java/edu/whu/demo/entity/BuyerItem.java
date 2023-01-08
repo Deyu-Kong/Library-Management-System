@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.awt.print.Book;
+
 /**
  * @author dzf
  * @date 2022/12/8 15:55
@@ -22,10 +24,18 @@ public class BuyerItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @ApiModelProperty("买书id")
     long buyerId;
-    @ApiModelProperty("图书id")
-    long bookId;
-    @ApiModelProperty("买书人id")
-    long userId;
+
+//    @ApiModelProperty("图书id")
+//    long bookId;
+    @ManyToOne
+    @JoinColumn(name="bookId")
+    BookItem book;
+
+//    @ApiModelProperty("买书人id")
+//    long userId;
+    @ManyToOne
+    @JoinColumn(name="userId")
+    UserItem user;
 
 
 }

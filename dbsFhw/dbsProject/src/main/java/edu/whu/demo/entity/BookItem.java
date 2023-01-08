@@ -37,8 +37,8 @@ public class BookItem {
     String publisherName;
 
     @ApiModelProperty("评分")
-            @Min(0)
-            @Max(10)
+    @Min(0)
+    @Max(10)
     Double rating;
 
     @ApiModelProperty("图片链接")
