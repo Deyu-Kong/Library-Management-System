@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface UserJPARepository extends JpaRepository<UserItem, Long>, JpaSpecificationExecutor<UserItem> {
     @Query(value="select count(user_id) from user_item",nativeQuery=true)
-    public Integer getUserCount();
+    Integer getUserCount();
 }

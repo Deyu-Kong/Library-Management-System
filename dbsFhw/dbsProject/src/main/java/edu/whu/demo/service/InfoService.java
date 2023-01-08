@@ -2,6 +2,7 @@ package edu.whu.demo.service;
 
 import edu.whu.demo.dao.BookJPARepository;
 import edu.whu.demo.dao.PaperJPARepository;
+import edu.whu.demo.dao.QueryDAO;
 import edu.whu.demo.dao.UserJPARepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +22,9 @@ public class InfoService {
     @Autowired
     UserJPARepository userRepository;
 
+    @Autowired
+    QueryDAO queryDAO;
+
     public Integer getBookCount() {
         return bookRepository.getBookCount();
     }
@@ -34,10 +38,10 @@ public class InfoService {
     }
 
     public Integer getBuyCount(String userName){
-        return -1;
+        return queryDAO.getBuyCountByUserName(userName);
     }
 
     public Integer getUploadCount(String userName){
-        return -1;
+        return queryDAO.getUploadCountByUserName(userName);
     }
 }

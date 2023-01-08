@@ -37,7 +37,7 @@ public class InfoController {
 
     @ApiOperation("根据Id查询图书")
     @GetMapping("/user/{userName}")
-    public ResponseEntity<Map<String, Integer>> getUserInfo(@PathVariable String userName){
+    public ResponseEntity<Map<String, Integer>> getUserInfo(@PathVariable("userName") String userName){
         Map<String,Integer>map=new HashMap<>();
         map.put("buyCount",infoService.getBuyCount(userName));
         map.put("uploadCount", infoService.getUploadCount(userName));

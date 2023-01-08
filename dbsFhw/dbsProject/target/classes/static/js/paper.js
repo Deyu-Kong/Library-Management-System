@@ -31,7 +31,7 @@ var vue = new Vue({
             this.dialogVisible = true
             this.editMode = true;
             this.currentPaper = Object.assign({}, paper)
-            console.log(this.currentPaper)
+            // console.log(this.currentPaper)
         },
         showAdd: function (paper) {
             this.dialogVisible = true
