@@ -57,12 +57,16 @@
                     </el-input>
                 </el-form-item>
                 <el-form-item label="用户身份">
-                    <el-input v-model="currentUser.userIdentity" placeholder="请输入内容">
-                    </el-input>
+<!--                    <el-input v-model="currentUser.userIdentity" placeholder="请输入内容">-->
+<!--                    </el-input>-->
                     <!--                    <el-switch v-model="currentBook.complete"-->
                     <!--                               active-color="#13ce66" inactive-color="#ff4949"></el-switch>-->
                     <!--                    <span v-show="currentBook.complete">已完成</span>-->
                     <!--                    <span v-show="!currentBook.complete">未完成</span>-->
+                    <el-select v-model="currentUser.userIdentity" placeholder="请选择" @change="$forceUpdate()">
+                        <el-option label="老师" value="选项一"></el-option>
+                        <el-option label="学生" value="选项二"></el-option>
+                    </el-select>
                 </el-form-item>
                 <el-form-item style="text-align: right;">
                     <el-button @click="dialogVisible=false">取 消</el-button>
