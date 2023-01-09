@@ -26,7 +26,7 @@ public class InfoController {
     @Autowired
     InfoService infoService;
 
-    @ApiOperation("查询全局信息")
+    @ApiOperation("全局信息")
     @GetMapping("/global")
     public ResponseEntity<Map<String, Integer>> getGlobalInfo(){
         Map<String,Integer>map=new HashMap<>();
@@ -45,13 +45,28 @@ public class InfoController {
         return ResponseEntity.ok(map);
     }
 
-    @ApiOperation("查询图书统计信息")
+    @ApiOperation("图书统计信息")
     @GetMapping("/book")
-    public ResponseEntity<Map<String, List<String>>> getBookInfo(){
-        return ResponseEntity.ok(infoService.getScoreDist());
+    public ResponseEntity<Map<String, Object>> getBookInfo(){
+        Map<String,Object>map=new HashMap<>();
+        Map<String, List<String>> scoreDist = infoService.getScoreDist();
+        map.put("xAxisData",scoreDist.get("xAxisData"));
+        map.put("seriesData", scoreDist.get("seriesData"));
+        return ResponseEntity.ok(map);
     }
 
-    @ApiOperation("查询用户统计信息")
+
+    @ApiOperation("论文统计信息")
+    @GetMapping("/paper")
+    public ResponseEntity<Map<String, Object>> getPaperInfo(){
+        Map<String,Object>map=new HashMap<>();
+        Map<String, List<String>> uploaderRank = infoService.getUploaderRank();
+        map.put("xAxisData",uploaderRank.get("xAxisData"));
+        map.put("seriesData", uploaderRank.get("seriesData"));
+        return ResponseEntity.ok(map);
+    }
+
+    @ApiOperation("用户统计信息")
     @GetMapping("/user")
     public ResponseEntity<Map<String, Object>> getUserInfo(){
         Map<String,Object>map=new HashMap<>();
@@ -62,9 +77,5 @@ public class InfoController {
         map.put("mcnt",infoService.getMaxBook().get("mcnt"));
         return ResponseEntity.ok(map);
     }
-//    @ApiOperation("查询用户统计信息")
-//    @GetMapping("/user")
-//    public ResponseEntity<Map<String, String>> getMaxBook(){
-//        return ResponseEntity.ok(infoService.getMaxBook());
-//    }
+
 }

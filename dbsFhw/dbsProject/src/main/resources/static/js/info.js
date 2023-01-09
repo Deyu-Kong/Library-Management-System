@@ -29,6 +29,27 @@ var vue = new Vue({
                     }
                 ],
             },
+            // paper
+            UploaderRankBarOption: {
+                title: {
+                    text: '论文贡献排行'
+                },
+                tooltip: {},//提示框
+                legend: {
+                    data: ['上传数']
+                },
+                xAxis: {
+                    data: []
+                },
+                yAxis: {},
+                series: [
+                    {
+                        name: '上传数',
+                        type: 'bar',
+                        data: []
+                    }
+                ],
+            },
 
             // user
             userName: "",
@@ -40,7 +61,7 @@ var vue = new Vue({
             mname: "",
             mcnt: "",
 
-            identityPieOption : {
+            identityPieOption: {
                 tooltip: {
                     trigger: 'item'
                 },
@@ -89,30 +110,37 @@ var vue = new Vue({
                         this.userCount = response.data.userCount;
                     })
                     .catch(e => self.$message.error(e.response.data))
-            }
-            else if (tab.name === "bookInfo") {
+            } else if (tab.name === "bookInfo") {
                 console.log("统计图书信息");
                 axios.get('info/book')
                     .then(response => {
                         console.log(response);
                         this.rateBarOption.xAxis.data = response.data.xAxisData;
                         this.rateBarOption.series[0].data = response.data.seriesData;
-                        console.log(this.rateBarOption)
+                        // console.log(this.rateBarOption)
                         this.rateBarChange();
-                    })
-                    // .catch(e => self.$message.error(e.response.data))
-            }
-            else if(tab.name==="userInfo"){
+                    });
+                // .catch(e => self.$message.error(e.response.data))
+            } else if (tab.name === "paperInfo") {
+                console.log("统计论文信息");
+                axios.get("info/paper")
+                    .then(response => {
+                        console.log(response);
+                        this.UploaderRankBarOption.xAxis.data = response.data.xAxisData;
+                        this.UploaderRankBarOption.series[0].data = response.data.seriesData;
+                        this.UploaderRankBarChange();
+                    });
+            } else if (tab.name === "userInfo") {
 
                 console.log("统计用户信息");
                 axios.get('info/user')
-                    .then(response=>{
+                    .then(response => {
                         console.log(response.data.identityPie);
                         this.identityPieOption.series[0].data = response.data.identityPie;
                         this.identityPieChange();
-                        this.mid=response.data.mid;
-                        this.mname=response.data.mname;
-                        this.mcnt=response.data.mcnt;
+                        this.mid = response.data.mid;
+                        this.mname = response.data.mname;
+                        this.mcnt = response.data.mcnt;
                     })
             }
         },
@@ -133,12 +161,13 @@ var vue = new Vue({
             rateBarEcharts.setOption(this.rateBarOption, true);
             console.log(rateBarEcharts);
         },
-        identityPieChange(){
-            console.log("identityPieChange")
+        identityPieChange() {
             const identityPieEcharts = echarts.init(document.getElementById("identity_pie"))
-
             identityPieEcharts.setOption(this.identityPieOption, true);
-            console.log("identityPieChange完成")
+        },
+        UploaderRankBarChange() {
+            const UploaderRankBarEcharts = echarts.init(document.getElementById("paper_uploader_rank_bar"))
+            UploaderRankBarEcharts.setOption(this.UploaderRankBarOption, true);
         }
     }
 })

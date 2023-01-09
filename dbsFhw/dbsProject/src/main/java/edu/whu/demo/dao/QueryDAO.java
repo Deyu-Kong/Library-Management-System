@@ -44,4 +44,13 @@ public interface QueryDAO extends JpaRepository<BookItem, Long>, JpaSpecificatio
             "user_item AS u WHERE u.user_id=id;"
             ,nativeQuery=true)
     List<Object[]> getMaxBook();
+
+    @Query(value="SELECT t1.counts, t2.user_name FROM(SELECT COUNT(*) AS counts," +
+            "paper_uploader_id AS uploader " +
+            "FROM paper_item GROUP BY uploader " +
+            "LIMIT 10) AS t1, user_item AS t2 " +
+            "WHERE t1.uploader=t2.user_id ORDER BY t1.counts DESC;",nativeQuery=true)
+    List<Object[]> getUploaderRank();
+
+    
 }

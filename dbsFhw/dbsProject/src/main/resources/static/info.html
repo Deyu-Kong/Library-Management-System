@@ -26,7 +26,7 @@
                 </el-row>
             </el-tab-pane>
 
-            <!--图书统计信息&ndash;-->
+            <!--图书统计信息-->
             <el-tab-pane label="图书统计信息" name="bookInfo">
                 <el-row>
                     <el-col :span="8">
@@ -35,8 +35,12 @@
                 </el-row>
             </el-tab-pane>
 
-            <el-tab-pane label="论文统计信息" name="third">论文统计信息</el-tab-pane>
+            <!--论文统计信息-->
+            <el-tab-pane label="论文统计信息" name="paperInfo">
+                <div id="paper_uploader_rank_bar" style="height: 200px;width: 400px"></div>
+            </el-tab-pane>
 
+            <!--用户统计信息-->
             <el-tab-pane label="用户统计信息" name="userInfo">
                 <el-row>
                     <el-col :xs="24" :md="12">
@@ -59,6 +63,7 @@
                         </ul>
                     </el-row>
                 </div>
+
                 <!--统计所有用户的信息-->
                 <div id="allUserInfo" v-show="!selectSingleUser">
                     <div id="identity_pie" style="height: 200px;width: 400px"></div>
