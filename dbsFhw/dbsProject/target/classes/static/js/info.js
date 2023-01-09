@@ -36,6 +36,10 @@ var vue = new Vue({
             uploadCount: null,
             selectSingleUser: false,
 
+            mid: "",
+            mname: "",
+            mcnt: "",
+
             identityPieOption : {
                 tooltip: {
                     trigger: 'item'
@@ -46,7 +50,7 @@ var vue = new Vue({
                 },
                 series: [
                     {
-                        name: 'Access From',
+                        name: '人数',
                         type: 'pie',
                         radius: ['40%', '70%'],
                         avoidLabelOverlap: false,
@@ -106,6 +110,9 @@ var vue = new Vue({
                         console.log(response.data.identityPie);
                         this.identityPieOption.series[0].data = response.data.identityPie;
                         this.identityPieChange();
+                        this.mid=response.data.mid;
+                        this.mname=response.data.mname;
+                        this.mcnt=response.data.mcnt;
                     })
             }
         },

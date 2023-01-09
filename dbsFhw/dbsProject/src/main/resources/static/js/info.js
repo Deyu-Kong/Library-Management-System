@@ -50,7 +50,7 @@ var vue = new Vue({
                 },
                 series: [
                     {
-                        name: 'Access From',
+                        name: '人数',
                         type: 'pie',
                         radius: ['40%', '70%'],
                         avoidLabelOverlap: false,
