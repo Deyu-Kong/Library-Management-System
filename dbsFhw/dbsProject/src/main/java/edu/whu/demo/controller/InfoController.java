@@ -57,9 +57,14 @@ public class InfoController {
         Map<String,Object>map=new HashMap<>();
         List<Map<String, String>> list = infoService.getIdentityPie();
         map.put("identityPie",list);
+        map.put("mname",infoService.getMaxBook().get("mname"));
+        map.put("mid",infoService.getMaxBook().get("mid"));
+        map.put("mcnt",infoService.getMaxBook().get("mcnt"));
         return ResponseEntity.ok(map);
     }
-    public ResponseEntity<Map<String, String>> getMaxBook(){
-        return ResponseEntity.ok(infoService.getMaxBook());
-    }
+//    @ApiOperation("查询用户统计信息")
+//    @GetMapping("/user")
+//    public ResponseEntity<Map<String, String>> getMaxBook(){
+//        return ResponseEntity.ok(infoService.getMaxBook());
+//    }
 }
