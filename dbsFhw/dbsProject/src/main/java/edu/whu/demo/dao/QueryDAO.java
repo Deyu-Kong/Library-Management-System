@@ -32,4 +32,10 @@ public interface QueryDAO extends JpaRepository<BookItem, Long>, JpaSpecificatio
             "GROUP BY FLOOR(rating) " +
             "ORDER BY FLOOR(rating) DESC;",nativeQuery = true)
     List<Object[]> getScoreDist();
+
+    @Query(value="SELECT COUNT(*) AS counts, user_identity " +
+            "FROM user_item " +
+            "GROUP BY user_identity " +
+            "ORDER BY counts DESC;",nativeQuery = true)
+    List<Object[]> getIdentityPie();
 }

@@ -50,4 +50,14 @@ public class InfoController {
     public ResponseEntity<Map<String, List<String>>> getBookInfo(){
         return ResponseEntity.ok(infoService.getScoreDist());
     }
+
+    @ApiOperation("查询用户统计信息")
+    @GetMapping("/user")
+    public ResponseEntity<Map<String, Object>> getUserInfo(){
+        Map<String,Object>map=new HashMap<>();
+        List<Map<String, String>> list = infoService.getIdentityPie();
+        map.put("identityPie",list);
+        return ResponseEntity.ok(map);
+    }
+
 }

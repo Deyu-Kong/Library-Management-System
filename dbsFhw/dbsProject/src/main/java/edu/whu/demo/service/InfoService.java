@@ -63,4 +63,16 @@ public class InfoService {
         map.put("seriesData",seriesData);
         return map;
     }
+
+    public List<Map<String, String>>getIdentityPie(){
+        List<Object[]> objects = queryDAO.getIdentityPie();
+        List<Map<String, String>> list=new ArrayList<>();
+        for(Object[] object : objects){
+            Map<String, String> temp=new HashMap<>();
+            temp.put("value", object[0].toString());
+            temp.put("name", object[1].toString());
+            list.add(temp);
+        }
+        return list;
+    }
 }

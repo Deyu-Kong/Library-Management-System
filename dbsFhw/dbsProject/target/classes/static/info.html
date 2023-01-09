@@ -37,7 +37,7 @@
 
             <el-tab-pane label="论文统计信息" name="third">论文统计信息</el-tab-pane>
 
-            <el-tab-pane label="用户统计信息" name="fourth">
+            <el-tab-pane label="用户统计信息" name="userInfo">
                 <el-row>
                     <el-col :xs="24" :md="12">
                         <el-input placeholder="请输入查询用户名" v-model="userName" size="mini" style="width: 80%">
@@ -45,16 +45,26 @@
                         </el-input>
                     </el-col>
                 </el-row>
-                <el-row v-if="showUserInfo">
-                    <ul>
-                        <li>
-                            用户买书数：{{buyCount}}
-                        </li>
-                        <li>
-                            上传论文数：{{uploadCount}}
-                        </li>
-                    </ul>
-                </el-row>
+
+
+
+                <!--统计单个用户的信息-->
+                <div id="singleUserInfo" v-show="selectSingleUser">
+                    <el-row>
+                        <ul>
+                            <li>
+                                用户买书数：{{buyCount}}
+                            </li>
+                            <li>
+                                上传论文数：{{uploadCount}}
+                            </li>
+                        </ul>
+                    </el-row>
+                </div>
+                <!--统计所有用户的信息-->
+                <div id="allUserInfo" v-show="!selectSingleUser">
+                    <div id="identity_pie" style="height: 200px;width: 400px"></div>
+                </div>
             </el-tab-pane>
         </el-tabs>
     </div>
