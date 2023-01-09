@@ -42,7 +42,7 @@ public class UserController {
 
     @ApiOperation("添加用户")
     @PostMapping("")
-    public ResponseEntity<String> addUser(@RequestBody UserItem user){
+    public ResponseEntity<String> adduser(@RequestBody UserItem user){
         try {
             UserItem result = userService.addUser(user);
             return ResponseEntity.ok(""+result.getUserId());
@@ -61,7 +61,7 @@ public class UserController {
 
     @ApiOperation("删除用户")
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable long id){
+    public ResponseEntity<Void> deleteuser(@PathVariable long id){
         userService.deleteUser(id);
         return ResponseEntity.ok().build();
     }

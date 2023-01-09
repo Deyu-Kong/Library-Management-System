@@ -59,5 +59,7 @@ public class InfoController {
         map.put("identityPie",list);
         return ResponseEntity.ok(map);
     }
-
+    public ResponseEntity<Map<String, String>> getMaxBook(){
+        return ResponseEntity.ok(infoService.getMaxBook());
+    }
 }

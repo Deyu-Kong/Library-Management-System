@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4153f095-2a96-4281-b3e7-92a28aca0ad1" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/dbsFhw/dbsProject/src/main/java/edu/whu/demo/controller/InfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/dbsFhw/dbsProject/src/main/java/edu/whu/demo/controller/InfoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dbsFhw/dbsProject/src/main/java/edu/whu/demo/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/dbsFhw/dbsProject/src/main/java/edu/whu/demo/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dbsFhw/dbsProject/src/main/java/edu/whu/demo/dao/QueryDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/dbsFhw/dbsProject/src/main/java/edu/whu/demo/dao/QueryDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dbsFhw/dbsProject/src/main/java/edu/whu/demo/service/InfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/dbsFhw/dbsProject/src/main/java/edu/whu/demo/service/InfoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dbsFhw/dbsProject/src/main/resources/static/info.html" beforeDir="false" afterPath="$PROJECT_DIR$/dbsFhw/dbsProject/src/main/resources/static/info.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dbsFhw/dbsProject/src/main/resources/static/js/info.js" beforeDir="false" afterPath="$PROJECT_DIR$/dbsFhw/dbsProject/src/main/resources/static/js/info.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="D:\maven-repo" />
+        <option name="mavenHome" value="$PROJECT_DIR$/../apache-maven-3.5.4-bin/apache-maven-3.5.4" />
+        <option name="userSettingsFile" value="D:\apache-maven-3.5.4-bin\apache-maven-3.5.4\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="jdkForImporter" value="11" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2K4qAcTwVMlgHPcstS3hUMHqDhS" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.annotationProcessors" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4153f095-2a96-4281-b3e7-92a28aca0ad1" name="Changes" comment="" />
+      <created>1673244063301</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1673244063301</updated>
+      <workItem from="1673244063637" duration="13000" />
+      <workItem from="1673244942556" duration="6000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
