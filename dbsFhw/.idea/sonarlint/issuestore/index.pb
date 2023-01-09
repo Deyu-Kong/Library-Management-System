@@ -19,10 +19,6 @@ k
 ;dbsProject/src/main/java/edu/whu/demo/entity/BuyerItem.java,e\1\e1784058c411d3ebbc2cfec995cdef6d647ba1bf
 o
 ?dbsProject/src/test/java/edu/whu/demo/DemoApplicationTests.java,1\c\1c1d6c0a8ac639bc41ec79c6c9c19c980eec1e6b
-e
-5dbsProject/src/main/java/edu/whu/DemoApplication.java,5\e\5e3ec07ee33a3e12ac8c8b914c8d2dd9cb16e283
-j
-:dbsProject/src/main/java/edu/whu/demo/entity/BookItem.java,6\5\65c61222bf5e7d5d3745ae5aca193ea9e246cb29
 k
 ;dbsProject/src/main/java/edu/whu/demo/entity/PaperItem.java,6\e\6e7427dbe50f1cd33a104ca2c1644be66e98e26b
 o
@@ -43,3 +39,7 @@ t
 DdbsProject/src/main/java/edu/whu/demo/controller/BookController.java,8\f\8fa4d5defbc440100dc72e3f6c2ef692febbae3a
 n
 >dbsProject/src/main/java/edu/whu/demo/service/BookService.java,4\2\4243072491dd1966c02bb7c3d4d24d0a15621f6f
+j
+:dbsProject/src/main/java/edu/whu/demo/entity/BookItem.java,6\5\65c61222bf5e7d5d3745ae5aca193ea9e246cb29
+e
+5dbsProject/src/main/java/edu/whu/DemoApplication.java,5\e\5e3ec07ee33a3e12ac8c8b914c8d2dd9cb16e283
