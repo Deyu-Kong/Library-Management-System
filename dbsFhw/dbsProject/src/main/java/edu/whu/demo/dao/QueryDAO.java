@@ -52,5 +52,5 @@ public interface QueryDAO extends JpaRepository<BookItem, Long>, JpaSpecificatio
             "WHERE t1.uploader=t2.user_id ORDER BY t1.counts DESC;",nativeQuery=true)
     List<Object[]> getUploaderRank();
 
-    
+
 }
