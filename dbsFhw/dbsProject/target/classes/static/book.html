@@ -36,7 +36,7 @@
                             <el-input placeholder="请输入出版社" v-model="bPublisher" size="mini" style="width: 80%"></el-input>
                         </el-form-item>
                     </el-col>
-                    <el-col :span="14">
+                    <el-col :span="10">
                         <el-form-item label="评分">
                             <el-input placeholder="请输入查询评分下限" v-model.number="bRateLow" size="mini" style="width: 40%"
                                       @input="(value)=>{isNaN(value)?isNaN(parseFloat(value))?
@@ -56,6 +56,7 @@
                 <el-button @click="query">查询</el-button>
                 <el-button @click="showAdd()">添加</el-button>
                 <el-button @click="clearSiev()">清空查询条件</el-button>
+                <el-button class="filter-item" style="margin-left: 10px;" type="primary" @click="openCsvDialog()" icon="el-icon-plus">批量添加</el-button>
             </el-row>
             <el-table :data="books.slice((currentPage-1)*PageSize,currentPage*PageSize)" height="600" :fit="true" :show-header="true"
                       @row-click="(row)=>showImg(row)">
@@ -142,6 +143,38 @@
             <el-image class="my-img" v-if="imgUrl" ref="imgUrl" :src="imgUrl" :previe-src-list="srcList"></el-image>
 <!--            <el-form label-width="100px">-->
 <!--            </el-form>-->
+        </el-dialog>
+
+        <el-dialog :title="csvTitle" :visible.sync="csvVisible" width="50%">
+            <div>
+                <el-form ref="file" label-width="120px">
+                    <el-form-item>
+                        <el-upload class="upload-demo" ref="upload" drag accept=".csv" action="" :multiple="false"
+                                :limit="1" :auto-upload="false" :on-change="handleChange">
+                            <i class="el-icon-upload"></i>
+                            <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
+                            <div class="el-upload__tip" slot="tip">注意：只能上传csv文件</div>
+                            <div class="el-upload__tip" slot="tip">当前选中文件：
+                                <span id="fileName"></span>
+                                <script>
+                                    $(function (file){
+                                        var fileName = "";
+                                        $("fileName").text(fileName);
+                                        if(file){
+                                            fileName = file.name;
+                                            $("fileName").text(fileName);
+                                        }
+                                    })
+                                </script>
+                            </div>
+                        </el-upload>
+                    </el-form-item>
+                </el-form>
+            </div>
+            <span slot="footer" class="dialog-footer">
+                <el-button @click="csvVisible = false">取消</el-button>
+                <el-button type="primary" @click="importCsv">导入</el-button>
+            </span>
         </el-dialog>
     </div>
 </div>

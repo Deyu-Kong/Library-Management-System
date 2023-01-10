@@ -16,7 +16,11 @@ var vue = new Vue({
         pageSizes:[10,20,30,40],
         PageSize:10,
         imgUrl: "https://img.alicdn.com/tfs/TB161Wer1uSBuNjy1XcXXcYjFXa-2528-1266.png",
-        detailVisible: false
+        detailVisible: false,
+        file: "",
+        fileName: "",
+        csvVisible: false,
+        csvTitle: ""
     },
     methods: {
         query: function (bBookname,bAuthor) {
@@ -128,6 +132,37 @@ var vue = new Vue({
             this.bPublishTime = ""
             this.bAuthor = ""
             this.query()
+        },
+        openCsvDialog() {
+            this.file = {};
+            this.fileName = "";
+            this.csvVisible = true;
+            this.csvTitle = '批量添加';
+            this.$refs.upload.clearFiles();
+        },
+        handleChange(file) {
+            this.$refs.upload.clearFiles();
+            //赋值this.file.file = file.raw;
+            this.file.file = file.raw;
+            this.fileName = file.name;
+        },
+        async importCsv() {
+            if(Object.keys(this.file).length != 0){
+                const res = await this.$store.api.newReq('/xxx/xxxxxx/importcsv').upload(this.file);
+                if (res.code === 0) {
+                    this.csvVisible = false;
+                    //这里是导入完文件后，重新查询数据库刷新页面this.getList();
+                    this.$message({
+                        type: 'success',
+                        message: '导入成功',
+                        duration: 1500,
+                        onClose: async () => {
+                        }
+                    })
+                }
+            }else{
+                this.$message.error('上传文件不能为空');
+            }
         }
     }
 })
