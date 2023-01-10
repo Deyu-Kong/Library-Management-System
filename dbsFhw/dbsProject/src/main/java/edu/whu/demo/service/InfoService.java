@@ -90,6 +90,11 @@ public class InfoService {
         return handleBarData(objects);
     }
 
+    public Map<String, List<String>> getBuyBar(){
+        List<Object[]> objects = queryDAO.getUserBuyBar();
+        return handleBarData(objects);
+    }
+
     private Map<String, List<String>> handleBarData(List<Object[]> objects){
         Map<String, List<String>> map = new HashMap<>();
         List<String> xAxisData = new ArrayList<>();
@@ -102,4 +107,6 @@ public class InfoService {
         map.put("seriesData", seriesData);
         return map;
     }
+
+
 }

@@ -75,7 +75,9 @@ public class InfoController {
         map.put("mname",infoService.getMaxBook().get("mname"));
         map.put("mid",infoService.getMaxBook().get("mid"));
         map.put("mcnt",infoService.getMaxBook().get("mcnt"));
+        Map<String, List<String>> buyBar = infoService.getBuyBar();
+        map.put("xAxisData",buyBar.get("xAxisData"));
+        map.put("seriesData", buyBar.get("seriesData"));
         return ResponseEntity.ok(map);
     }
-
 }

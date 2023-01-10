@@ -93,6 +93,27 @@ var vue = new Vue({
                     }
                 ]
             },
+
+            userBuyBarOption: {
+                title: {
+                    text: '购书前十名'
+                },
+                tooltip: {},//提示框
+                legend: {
+                    data: ['购买数']
+                },
+                xAxis: {
+                    data: []
+                },
+                yAxis: {},
+                series: [
+                    {
+                        name: '购买数',
+                        type: 'bar',
+                        data: []
+                    }
+                ],
+            },
         }
 
     },
@@ -125,7 +146,7 @@ var vue = new Vue({
                 console.log("统计论文信息");
                 axios.get("info/paper")
                     .then(response => {
-                        console.log(response);
+                        // console.log(response);
                         this.UploaderRankBarOption.xAxis.data = response.data.xAxisData;
                         this.UploaderRankBarOption.series[0].data = response.data.seriesData;
                         this.UploaderRankBarChange();
@@ -135,12 +156,16 @@ var vue = new Vue({
                 console.log("统计用户信息");
                 axios.get('info/user')
                     .then(response => {
-                        console.log(response.data.identityPie);
+                        // console.log(response.data.identityPie);
                         this.identityPieOption.series[0].data = response.data.identityPie;
                         this.identityPieChange();
                         this.mid = response.data.mid;
                         this.mname = response.data.mname;
                         this.mcnt = response.data.mcnt;
+                        this.userBuyBarOption.xAxis.data = response.data.xAxisData;
+                        this.userBuyBarOption.series[0].data = response.data.seriesData;
+                        console.log(response)
+                        this.userBuyBarChange();
                     })
             }
         },
@@ -159,7 +184,7 @@ var vue = new Vue({
             const rateBarEcharts = echarts.init(document.getElementById('bar_rating'));
             // 使用刚指定的配置项和数据显示图表。
             rateBarEcharts.setOption(this.rateBarOption, true);
-            console.log(rateBarEcharts);
+            // console.log(rateBarEcharts);
         },
         identityPieChange() {
             const identityPieEcharts = echarts.init(document.getElementById("identity_pie"))
@@ -168,7 +193,11 @@ var vue = new Vue({
         UploaderRankBarChange() {
             const UploaderRankBarEcharts = echarts.init(document.getElementById("paper_uploader_rank_bar"))
             UploaderRankBarEcharts.setOption(this.UploaderRankBarOption, true);
-        }
+        },
+        userBuyBarChange(){
+            const userBuyBarEcharts = echarts.init(document.getElementById("userBuyBar"))
+            userBuyBarEcharts.setOption(this.userBuyBarOption, true);
+        },
     }
 })
 

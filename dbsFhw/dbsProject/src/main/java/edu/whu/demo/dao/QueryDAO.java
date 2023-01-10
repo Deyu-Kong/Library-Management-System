@@ -47,10 +47,15 @@ public interface QueryDAO extends JpaRepository<BookItem, Long>, JpaSpecificatio
 
     @Query(value="SELECT t1.counts, t2.user_name FROM(SELECT COUNT(*) AS counts," +
             "paper_uploader_id AS uploader " +
-            "FROM paper_item GROUP BY uploader " +
+            "FROM paper_item GROUP BY uploader ORDER BY counts DESC " +
             "LIMIT 10) AS t1, user_item AS t2 " +
             "WHERE t1.uploader=t2.user_id ORDER BY t1.counts DESC;",nativeQuery=true)
     List<Object[]> getUploaderRank();
 
+    @Query(value="SELECT t1.counts, t2.user_name FROM(SELECT count(*) AS counts, " +
+            "user_id FROM buyer_item GROUP BY user_id " +
+            "ORDER BY counts DESC LIMIT 10) AS t1, user_item AS t2 " +
+            "WHERE t1.user_id=t2.user_id ORDER BY t1.counts DESC ",nativeQuery=true)
+    List<Object[]> getUserBuyBar();
 
 }
