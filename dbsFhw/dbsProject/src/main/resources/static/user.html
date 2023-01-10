@@ -6,21 +6,39 @@
 </head>
 <body>
 
-<div id="div_main">
+
+<div id="div_main"style="overflow: auto; height: 600px">
     <div id="app" style="padding-right: 0; padding-left: 0; padding-bottom: 0;">
         <!--主窗口-->
         <el-card style="padding-right: 20px; padding-left: 20px; padding-bottom: 40px;" header="用户管理">
             <el-row>
-                <el-col :xs="24" :md="12">
-                    <el-input placeholder="请输入条件" v-model="keyword" class="input-with-select">
-                        <el-button slot="append" icon="el-icon-search" @click="query"></el-button>
-                    </el-input>
-                </el-col>
+<!--                <el-col :xs="24" :md="12">-->
+<!--                    <el-input placeholder="请输入条件" v-model="keyword" class="input-with-select">-->
+<!--                        <el-button slot="append" icon="el-icon-search" @click="query"></el-button>-->
+<!--                    </el-input>-->
+<!--                </el-col>-->
+                <el-form>
+                    <el-col :span="5">
+                        <el-form-item label="用户名">
+                            <el-input placeholder="请输入用户名" v-model="uName" size="mini" style="width: 80%"></el-input>
+                            <!--                            @input="onInputChange($event)-->
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="5">
+                        <el-form-item label="用户身份">
+                            <el-input placeholder="请输入用户身份" v-model="uIdentity" size="mini" style="width: 80%"></el-input>
+                        </el-form-item>
+                    </el-col>
+                </el-form>
+            </el-row>
+            <el-row>
                 <el-col style="left: 0px; padding-left: 20px;" :xs="24" :md="12" v-if="true">
+                    <el-button @click="query">查询</el-button>
                     <el-button @click="showAdd()">添加</el-button>
+                    <el-button @click="clearSiev()">清空查询条件</el-button>
                 </el-col>
             </el-row>
-            <el-table style="top: 20px;" :data="users" :fit="true" :show-header="true">
+            <el-table :data="users.slice((currentPage-1)*PageSize,currentPage*PageSize)" height="600" :fit="true" :show-header="true">
                 <el-table-column prop="userId" label="用户ID">
                 </el-table-column>
                 <el-table-column prop="userName" label="用户姓名">
@@ -42,6 +60,15 @@
                     </template>
                 </el-table-column>
             </el-table>
+            <div class="tabListPage">
+                <el-pagination @size-change="handleSizeChange"
+                               @current-change="handleCurrentChange"
+                               :current-page="currentPage"
+                               :page-sizes="pageSizes"
+                               :page-size="PageSize" layout="total, sizes, prev, pager, next, jumper"
+                               :total="totalCount">
+                </el-pagination>
+            </div>
         </el-card>
 
 
@@ -65,7 +92,10 @@
                     <!--                    <span v-show="!currentBook.complete">未完成</span>-->
                     <el-select v-model="currentUser.userIdentity" placeholder="请选择" @change="$forceUpdate()">
                         <el-option label="老师" value="选项一"></el-option>
-                        <el-option label="学生" value="选项二"></el-option>
+
+                        <el-option label="院士" value="选项二"></el-option>
+                        <el-option label="教授" value="选项三"></el-option>
+                        <el-option label="学生" value="选项四"></el-option>
                     </el-select>
                 </el-form-item>
                 <el-form-item style="text-align: right;">

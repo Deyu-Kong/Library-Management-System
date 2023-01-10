@@ -29,6 +29,41 @@ var vue = new Vue({
                     }
                 ],
             },
+            publisherBarOption:{
+                title: {
+                    text: '出版社rank20'
+                },
+                tooltip: {},//提示框
+                legend: {
+                    data: ['出版图书数量']
+                },
+                xAxis: {
+                    data: []
+                },
+                yAxis: {},
+                series: [
+                    {
+                        name: '出版图书数量',
+                        type: 'bar',
+                        data: []
+                    }
+                ],
+            },
+            publishYearOption : {
+                xAxis: {
+                    type: 'category',
+                    data: []
+                },
+                yAxis: {
+                    type: 'value'
+                },
+                series: [
+                    {
+                        data: [],
+                        type: 'line'
+                    }
+                ]
+            },
             // paper
             UploaderRankBarOption: {
                 title: {
@@ -60,6 +95,8 @@ var vue = new Vue({
             mid: "",
             mname: "",
             mcnt: "",
+
+
 
             identityPieOption: {
                 tooltip: {
@@ -93,6 +130,27 @@ var vue = new Vue({
                     }
                 ]
             },
+
+            userBuyBarOption: {
+                title: {
+                    text: '购书前十名'
+                },
+                tooltip: {},//提示框
+                legend: {
+                    data: ['购买数']
+                },
+                xAxis: {
+                    data: []
+                },
+                yAxis: {},
+                series: [
+                    {
+                        name: '购买数',
+                        type: 'bar',
+                        data: []
+                    }
+                ],
+            },
         }
 
     },
@@ -114,33 +172,41 @@ var vue = new Vue({
                 console.log("统计图书信息");
                 axios.get('info/book')
                     .then(response => {
-                        console.log(response);
-                        this.rateBarOption.xAxis.data = response.data.xAxisData;
-                        this.rateBarOption.series[0].data = response.data.seriesData;
-                        // console.log(this.rateBarOption)
-                        this.rateBarChange();
+                        this.rateBarOption.xAxis.data = response.data.rate_xAxisData;
+                        this.rateBarOption.series[0].data = response.data.rate_seriesData;
+                        // this.rateBarChange();
+                        this.chartChange("bar_rating",this.rateBarOption)
+                        this.publisherBarOption.xAxis.data = response.data.publisher_xAxisData;
+                        this.publisherBarOption.series[0].data = response.data.publisher_seriesData;
+                        this.chartChange("publisher_rank",this.publisherBarOption)
+                        this.publishYearOption.xAxis.data = response.data.year_xAxisData;
+                        this.publishYearOption.series[0].data = response.data.year_seriesData;
+                        this.chartChange("publish_year",this.publishYearOption)
                     });
                 // .catch(e => self.$message.error(e.response.data))
             } else if (tab.name === "paperInfo") {
                 console.log("统计论文信息");
                 axios.get("info/paper")
                     .then(response => {
-                        console.log(response);
+                        // console.log(response);
                         this.UploaderRankBarOption.xAxis.data = response.data.xAxisData;
                         this.UploaderRankBarOption.series[0].data = response.data.seriesData;
-                        this.UploaderRankBarChange();
+                        this.chartChange("paper_uploader_rank_bar",this.UploaderRankBarOption)
                     });
             } else if (tab.name === "userInfo") {
 
                 console.log("统计用户信息");
                 axios.get('info/user')
                     .then(response => {
-                        console.log(response.data.identityPie);
+                        // console.log(response.data.identityPie);
                         this.identityPieOption.series[0].data = response.data.identityPie;
-                        this.identityPieChange();
+                        this.chartChange("identity_pie",this.identityPieOption)
                         this.mid = response.data.mid;
                         this.mname = response.data.mname;
                         this.mcnt = response.data.mcnt;
+                        this.userBuyBarOption.xAxis.data = response.data.xAxisData;
+                        this.userBuyBarOption.series[0].data = response.data.seriesData;
+                        this.chartChange("userBuyBar",this.userBuyBarOption);
                     })
             }
         },
@@ -154,21 +220,12 @@ var vue = new Vue({
                 })
                 .catch(e => self.$message.error(e.response.data));
         },
-        rateBarChange() {
-            // 基于准备好的dom，初始化echarts实例
-            const rateBarEcharts = echarts.init(document.getElementById('bar_rating'));
-            // 使用刚指定的配置项和数据显示图表。
-            rateBarEcharts.setOption(this.rateBarOption, true);
-            console.log(rateBarEcharts);
-        },
-        identityPieChange() {
-            const identityPieEcharts = echarts.init(document.getElementById("identity_pie"))
-            identityPieEcharts.setOption(this.identityPieOption, true);
-        },
-        UploaderRankBarChange() {
-            const UploaderRankBarEcharts = echarts.init(document.getElementById("paper_uploader_rank_bar"))
-            UploaderRankBarEcharts.setOption(this.UploaderRankBarOption, true);
+        chartChange(div_id,option){
+            const myEcharts = echarts.init(document.getElementById(div_id))
+            myEcharts.setOption(option, true);
         }
+
+
     }
 })
 
