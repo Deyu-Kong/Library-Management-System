@@ -50,8 +50,14 @@ public class InfoController {
     public ResponseEntity<Map<String, Object>> getBookInfo(){
         Map<String,Object>map=new HashMap<>();
         Map<String, List<String>> scoreDist = infoService.getScoreDist();
-        map.put("xAxisData",scoreDist.get("xAxisData"));
-        map.put("seriesData", scoreDist.get("seriesData"));
+        map.put("rate_xAxisData",scoreDist.get("xAxisData"));
+        map.put("rate_seriesData", scoreDist.get("seriesData"));
+        Map<String, List<String>> publisherBar = infoService.getPublisherBar();
+        map.put("publisher_xAxisData",publisherBar.get("xAxisData"));
+        map.put("publisher_seriesData", publisherBar.get("seriesData"));
+        Map<String, List<String>> publishYear = infoService.getPublishYear();
+        map.put("year_xAxisData",publishYear.get("xAxisData"));
+        map.put("year_seriesData", publishYear.get("seriesData"));
         return ResponseEntity.ok(map);
     }
 

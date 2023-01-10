@@ -95,6 +95,34 @@ public class InfoService {
         return handleBarData(objects);
     }
 
+    public Map<String, List<String>> getPublisherBar(){
+        List<Object[]> objects = queryDAO.getPublisherBar();
+        return handleBarData(objects);
+    }
+
+    public Map<String, List<String>> getPublishYear(){
+        Map<String, List<String>> map = new HashMap<>();
+        List<Object[]> objects = queryDAO.getPublishYear();
+        List<String> xAxisData = new ArrayList<>();
+        List<String> seriesData = new ArrayList<>();
+        int year=1970;
+        int index=0;
+        int n=objects.size();
+        while(index<n){
+            xAxisData.add(Integer.toString(year));
+            if(objects.get(index)[1].toString().equals(Integer.toString(year))){
+                seriesData.add(objects.get(index)[0].toString());
+                index++;
+            }else{
+                seriesData.add("0");
+            }
+            year++;
+        }
+        map.put("xAxisData", xAxisData);
+        map.put("seriesData", seriesData);
+        return map;
+    }
+
     private Map<String, List<String>> handleBarData(List<Object[]> objects){
         Map<String, List<String>> map = new HashMap<>();
         List<String> xAxisData = new ArrayList<>();

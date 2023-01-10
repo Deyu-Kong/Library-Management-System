@@ -58,4 +58,18 @@ public interface QueryDAO extends JpaRepository<BookItem, Long>, JpaSpecificatio
             "WHERE t1.user_id=t2.user_id ORDER BY t1.counts DESC ",nativeQuery=true)
     List<Object[]> getUserBuyBar();
 
+    @Query(value="SELECT COUNT(*) AS counts, publisher_name " +
+            "FROM book_item " +
+            "GROUP BY publisher_name " +
+            "ORDER BY counts DESC " +
+            "LIMIT 20;",nativeQuery=true)
+    List<Object[]> getPublisherBar();
+
+    @Query(value="SELECT COUNT(*) AS counts, YEAR(publication_date) AS `year` " +
+            "FROM book_item " +
+            "GROUP BY year " +
+            "HAVING year>=1970 " +
+            "ORDER BY year ", nativeQuery=true)
+    List<Object[]> getPublishYear();
+
 }

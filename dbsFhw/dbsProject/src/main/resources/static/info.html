@@ -18,33 +18,53 @@
     <div id="app" style="padding-right: 0; padding-left: 0; padding-bottom: 0;">
         <el-tabs v-model="activeName2" type="card" @tab-click="handleClick">
             <!--全局统计信息-->
-            <el-tab-pane label="全局统计信息" name="globalInfo">
-                <el-row>
-                    <el-card
-                            style="height:200px; width: 400px;padding-right: 20px; padding-left: 20px; padding-bottom: 40px;"
-                            header="总数统计">
-                        <ul>
-                            <li>
-                                图书总数：{{bookCount}}
-                            </li>
-                            <li>
-                                论文总数：{{paperCount}}
-                            </li>
-                            <li>
-                                用户总数：{{userCount}}
-                            </li>
-                        </ul>
-                    </el-card>
-                </el-row>
-            </el-tab-pane>
+<!--            <el-tab-pane label="全局统计信息" name="globalInfo">-->
+<!--                <el-row>-->
+<!--                    <el-card-->
+<!--                            style="height:200px; width: 400px;padding-right: 20px; padding-left: 20px; padding-bottom: 40px;"-->
+<!--                            header="总数统计">-->
+<!--                        <ul>-->
+<!--                            <li>-->
+<!--                                图书总数：{{bookCount}}-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                论文总数：{{paperCount}}-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                用户总数：{{userCount}}-->
+<!--                            </li>-->
+<!--                        </ul>-->
+<!--                    </el-card>-->
+<!--                </el-row>-->
+<!--            </el-tab-pane>-->
 
             <!--图书统计信息-->
             <el-tab-pane label="图书统计信息" name="bookInfo">
-                <el-card
-                        style="height:200px; width: 400px;padding-right: 20px; padding-left: 20px; padding-bottom: 40px;"
-                        header="图书评分分布图">
-                    <div id="bar_rating" style="height: 200px;width: 400px"></div>
-                </el-card>
+                <el-row>
+                    <el-col span=12>
+                        <el-card
+                                style="height:200px; width: 400px;padding-right: 20px; padding-left: 20px; padding-bottom: 40px;"
+                                header="图书评分分布图">
+                            <div id="bar_rating" style="height: 200px;width: 400px"></div>
+                        </el-card>
+                    </el-col>
+
+                    <el-col span=12>
+                        <el-card
+                                style="height:200px; width: 400px;padding-right: 20px; padding-left: 20px; padding-bottom: 40px;"
+                                header="出版社rank20">
+                            <div id="publisher_rank" style="height: 200px;width: 400px"></div>
+                        </el-card>
+                    </el-col>
+                </el-row>
+                    <el-card
+                            style="height:200px; width: 1000px;padding-right: 20px; padding-left: 20px; padding-bottom: 40px;"
+                            header="图书年份统计">
+                        <div id="publish_year" style="height: 200px;width: 1000px"></div>
+                    </el-card>
+                <el-row>
+
+                </el-row>
             </el-tab-pane>
 
             <!--论文统计信息-->
