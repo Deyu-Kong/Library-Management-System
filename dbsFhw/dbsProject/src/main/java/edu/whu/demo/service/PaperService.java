@@ -37,24 +37,26 @@ public class PaperService {
         paperRepository.deleteById(id);
     }
 
-    public List<PaperItem> findPapers(String paperTitle, Date paperDate, String paperAuthor, String paperUploader, Date uploadDate) {
+    public List<PaperItem> findPapers(String paperTitle, Date spaperDate, Date epaperDate,String paperAuthor, String paperUploader, Date suploadDate,Date euploadDate) {
         //动态构造查询条件
         Specification<PaperItem> specification = (root, query, criteriaBuilder) -> {
             List<Predicate> predicateList = new ArrayList<>();
             if (paperTitle != null) {
                 predicateList.add(criteriaBuilder.like(root.get("paperTitle"), "%" + paperTitle + "%"));
             }
-            if (paperDate != null) {
-                predicateList.add(criteriaBuilder.equal(root.get("paperDate"), paperDate));
+            if (spaperDate != null&& epaperDate != null) {
+                predicateList.add(criteriaBuilder.greaterThanOrEqualTo(root.get("paperDate"), spaperDate));
+                predicateList.add(criteriaBuilder.lessThanOrEqualTo(root.get("paperDate"), epaperDate));
             }
             if (paperAuthor!=null){
-                predicateList.add(criteriaBuilder.equal(root.get("paperAuthor"),paperAuthor));
+                predicateList.add(criteriaBuilder.like(root.get("paperAuthor"),"%"+paperAuthor + "%"));
             }
             if(paperUploader!=null){
-                predicateList.add(criteriaBuilder.equal(root.get("paperUploader"),paperUploader));
+                predicateList.add(criteriaBuilder.like(root.get("paperUploader"),paperUploader));
             }
-            if(uploadDate!=null){
-                predicateList.add(criteriaBuilder.equal(root.get("uploadDate"),uploadDate));
+            if(suploadDate!=null&&euploadDate!=null){
+                predicateList.add(criteriaBuilder.greaterThanOrEqualTo(root.get("uploadDate"), suploadDate));
+                predicateList.add(criteriaBuilder.lessThanOrEqualTo(root.get("uploadDate"), euploadDate));
             }
             Predicate[] predicates = predicateList.toArray(new Predicate[predicateList.size()]);
             return criteriaBuilder.and(predicates);

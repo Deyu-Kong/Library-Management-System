@@ -61,6 +61,8 @@ var vue = new Vue({
             mname: "",
             mcnt: "",
 
+
+
             identityPieOption: {
                 tooltip: {
                     trigger: 'item'
@@ -169,6 +171,8 @@ var vue = new Vue({
             const UploaderRankBarEcharts = echarts.init(document.getElementById("paper_uploader_rank_bar"))
             UploaderRankBarEcharts.setOption(this.UploaderRankBarOption, true);
         }
+
+
     }
 })
 

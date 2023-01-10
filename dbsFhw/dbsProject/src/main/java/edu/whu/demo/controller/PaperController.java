@@ -41,9 +41,11 @@ public class PaperController {
     // get: localhost:8088/papers?name=作业&&complete=true
     @ApiOperation("根据条件查询论文")
     @GetMapping("")
-    public ResponseEntity<List<PaperItem>> findpapers(@ApiParam("论文名称")String name, @ApiParam("发表日期") Date paperDate, @ApiParam("作者")String author,
-                                                      @ApiParam("上传者")String uploader, @ApiParam("上传日期")Date uploadDate){
-        List<PaperItem> result = paperService.findPapers(name, paperDate, author, uploader, uploadDate);
+    public ResponseEntity<List<PaperItem>> findpapers(@ApiParam("论文名称")String name, @ApiParam("发表日期(起)") Date spaperDate,
+                                                      @ApiParam("发表日期(止)") Date epaperDate,@ApiParam("作者")String author,
+                                                      @ApiParam("上传者")String uploader, @ApiParam("上传日期(起)")Date suploadDate,
+                                                      @ApiParam("上传日期(止)") Date euploadDate){
+        List<PaperItem> result = paperService.findPapers(name, spaperDate,epaperDate, author, uploader, suploadDate,euploadDate);
         return ResponseEntity.ok(result);
     }
 

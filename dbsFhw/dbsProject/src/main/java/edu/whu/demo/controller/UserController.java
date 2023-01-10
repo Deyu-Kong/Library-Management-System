@@ -21,7 +21,7 @@ public class UserController {
     // get: localhost:8088/users/1
     @ApiOperation("根据Id查询用户")
     @GetMapping("/{id}")
-    public ResponseEntity<UserItem> getUser(@ApiParam("用户Id")@PathVariable long id){
+    public ResponseEntity<UserItem> getuser(@ApiParam("用户Id")@PathVariable long id){
         UserItem result = userService.getUser(id);
         if(result==null) {
             return ResponseEntity.noContent().build();
@@ -35,7 +35,7 @@ public class UserController {
     // get: localhost:8088/users?name=user1&&identity=学生
     @ApiOperation("根据条件查询用户")
     @GetMapping("")
-    public ResponseEntity<List<UserItem>> findUsers(@ApiParam("用户名称")String userName, @ApiParam("用户身份") String userIdentity){
+    public ResponseEntity<List<UserItem>> findusers(@ApiParam("用户名称")String userName, @ApiParam("用户身份") String userIdentity){
         List<UserItem> result = userService.findUsers(userName, userIdentity);
         return ResponseEntity.ok(result);
     }
