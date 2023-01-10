@@ -18,7 +18,7 @@ var vue = new Vue({
         imgUrl: "https://img.alicdn.com/tfs/TB161Wer1uSBuNjy1XcXXcYjFXa-2528-1266.png",
         detailVisible: false,
         file: "",
-        fileName: "",
+        fileList: [],
         csvVisible: false,
         csvTitle: ""
     },
@@ -144,7 +144,9 @@ var vue = new Vue({
             this.$refs.upload.clearFiles();
             //赋值this.file.file = file.raw;
             this.file.file = file.raw;
-            this.fileName = file.name;
+            this.fileList = [{name: file.name, url: ""}];
+            var csvName = document.getElementById("csvName");
+            csvName.innerHTML = file.name;
         },
         async importCsv() {
             if(Object.keys(this.file).length != 0){
@@ -163,6 +165,12 @@ var vue = new Vue({
             }else{
                 this.$message.error('上传文件不能为空');
             }
+        },
+        handleSuccess(){
+
+        },
+        handleError(){
+
         }
     }
 })
