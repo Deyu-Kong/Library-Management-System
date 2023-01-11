@@ -44,7 +44,7 @@ public class BuyerService {
             if (bookId != null) {
                 predicateList.add(criteriaBuilder.equal(root.get("bookId"), bookId));
             }
-            if (userId != null) {
+            if (userId!= null) {
                 predicateList.add(criteriaBuilder.equal(root.get("userId"), userId));
             }
 

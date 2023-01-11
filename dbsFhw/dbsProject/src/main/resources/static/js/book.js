@@ -143,6 +143,7 @@ var vue = new Vue({
         handleChange(file) {
             this.$refs.upload.clearFiles();
             //赋值this.file.file = file.raw;
+            this.file={};
             this.file.file = file.raw;
             this.fileList = [{name: file.name, url: ""}];
             var csvName = document.getElementById("csvName");

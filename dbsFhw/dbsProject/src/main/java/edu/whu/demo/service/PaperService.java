@@ -37,7 +37,7 @@ public class PaperService {
         paperRepository.deleteById(id);
     }
 
-    public List<PaperItem> findPapers(String paperTitle, Date spaperDate, Date epaperDate,String paperAuthor, String paperUploader, Date suploadDate,Date euploadDate) {
+    public List<PaperItem> findPapers(String paperTitle, Date spaperDate, Date epaperDate,String paperAuthor, Long paperUploaderId, Date suploadDate,Date euploadDate) {
         //动态构造查询条件
         Specification<PaperItem> specification = (root, query, criteriaBuilder) -> {
             List<Predicate> predicateList = new ArrayList<>();
@@ -51,8 +51,8 @@ public class PaperService {
             if (paperAuthor!=null){
                 predicateList.add(criteriaBuilder.like(root.get("paperAuthor"),"%"+paperAuthor + "%"));
             }
-            if(paperUploader!=null){
-                predicateList.add(criteriaBuilder.like(root.get("paperUploader"),paperUploader));
+            if(paperUploaderId!=null){
+                predicateList.add(criteriaBuilder.equal(root.get("paperUploaderId"),paperUploaderId));
             }
             if(suploadDate!=null&&euploadDate!=null){
                 predicateList.add(criteriaBuilder.greaterThanOrEqualTo(root.get("uploadDate"), suploadDate));

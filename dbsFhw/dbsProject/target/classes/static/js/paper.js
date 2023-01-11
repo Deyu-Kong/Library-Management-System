@@ -56,12 +56,13 @@ var vue = new Vue({
                 }
                 path = path + "spaperDate=" + startTime + "&&epaperDate=" + endTime
             }
-            if(this.pUpId && this.pUpId != ""){
+            if(this.pUpId && this.pUpId != null){
                 if(flag) path = path + "&&"
                 else{
                     flag = true;
                     path = path + "?"
                 }
+                console.log(this.pUpId)
                 path = path + "uploader=" +this.pUpId
             }
 

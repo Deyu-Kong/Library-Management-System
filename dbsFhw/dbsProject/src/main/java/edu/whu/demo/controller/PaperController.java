@@ -43,7 +43,7 @@ public class PaperController {
     @GetMapping("")
     public ResponseEntity<List<PaperItem>> findpapers(@ApiParam("论文名称")String name, @ApiParam("发表日期(起)") Date spaperDate,
                                                       @ApiParam("发表日期(止)") Date epaperDate,@ApiParam("作者")String author,
-                                                      @ApiParam("上传者")String uploader, @ApiParam("上传日期(起)")Date suploadDate,
+                                                      @ApiParam("上传者")Long uploader, @ApiParam("上传日期(起)")Date suploadDate,
                                                       @ApiParam("上传日期(止)") Date euploadDate){
         List<PaperItem> result = paperService.findPapers(name, spaperDate,epaperDate, author, uploader, suploadDate,euploadDate);
         return ResponseEntity.ok(result);
