@@ -22,7 +22,8 @@
 	<modules>
 		<module>jpaDemo</module>
 		<module>dbsProject</module>
-	</modules>
+        <module>dataProject</module>
+    </modules>
 
 	<!--子模块共享属性-->
 	<properties>
