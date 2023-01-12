@@ -8,7 +8,7 @@ var vue = new Vue({
         pUpDate: "",
         pUpId: null,
         papers: [], //查询结果
-        currentPaper: {uploader:{}}, //当前编辑的事项
+        currentPaper: {}, //当前编辑的事项
         dialogVisible: false, //对话框是否显示
         editMode: false, //当前是否是编辑模式（还是添加模式）
         currentPage:1,
@@ -92,7 +92,7 @@ var vue = new Vue({
             this.dialogVisible = true
             this.editMode = false;
             // this.currentPaper = {complete: false}
-            this.currentPaper = {uploader:{},complete: false}
+            this.currentPaper = {complete: false}
         },
         savePaper: function () {
             var self = this
