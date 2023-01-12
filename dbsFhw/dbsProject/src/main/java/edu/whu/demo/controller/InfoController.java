@@ -58,6 +58,7 @@ public class InfoController {
         Map<String, List<String>> publishYear = infoService.getPublishYear();
         map.put("year_xAxisData",publishYear.get("xAxisData"));
         map.put("year_seriesData", publishYear.get("seriesData"));
+        map.put("bookTitles",infoService.getBuyerBooks().get("bookTitles"));
         return ResponseEntity.ok(map);
     }
 
@@ -84,6 +85,7 @@ public class InfoController {
         Map<String, List<String>> buyBar = infoService.getBuyBar();
         map.put("xAxisData",buyBar.get("xAxisData"));
         map.put("seriesData", buyBar.get("seriesData"));
+
         return ResponseEntity.ok(map);
     }
 }
