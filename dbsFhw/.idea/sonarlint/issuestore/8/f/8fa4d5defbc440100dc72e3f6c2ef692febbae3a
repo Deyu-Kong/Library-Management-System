@@ -5,3 +5,7 @@ java:S1874"3Remove this use of "description"; it is deprecated.(šÔÜú
 java:S46845"@Replace this persistent entity with a simple POJO or DTO object.(º½±øÿÿÿÿ
 [
 java:S4684A"@Replace this persistent entity with a simple POJO or DTO object.(ğ­¢áùÿÿÿÿ
+V
+java:S1854P";Remove this useless assignment to local variable "content".(£İ€şøÿÿÿÿ
+G
+java:S1481P",Remove this unused "content" local variable.(£İ€şøÿÿÿÿ

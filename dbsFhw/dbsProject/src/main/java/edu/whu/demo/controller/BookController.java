@@ -74,5 +74,11 @@ public class BookController {
         return ResponseEntity.ok().build();
     }
 
+    @ApiOperation("上传csv")
+    @GetMapping("/upload")
+    public ResponseEntity<String> addbook(@ApiParam("csv内容")String csvContent){
+        String content = csvContent;
+        return ResponseEntity.ok().build();
+    }
 
 }
