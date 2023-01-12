@@ -25,17 +25,17 @@ public class BuyerItem {
     @ApiModelProperty("买书id")
     long buyerId;
 
-//    @ApiModelProperty("图书id")
-//    long bookId;
-    @ManyToOne
-    @JoinColumn(name="bookId")
-    BookItem book;
+    @ApiModelProperty("图书id")
+    long bookId;
+//    @ManyToOne
+//    @JoinColumn(name="bookId")
+//    BookItem book;
 
-//    @ApiModelProperty("买书人id")
-//    long userId;
-    @ManyToOne
-    @JoinColumn(name="userId")
-    UserItem user;
+    @ApiModelProperty("买书人id")
+    long userId;
+//    @ManyToOne
+//    @JoinColumn(name="userId")
+//    UserItem user;
 
 
 }

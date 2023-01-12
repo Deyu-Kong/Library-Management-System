@@ -33,13 +33,13 @@ public class PaperItem {
     @ApiModelProperty("论文作者")
     String paperAuthor;
 
-//    @ApiModelProperty("上传者Id")
-//    long paperUploaderId;
+    @ApiModelProperty("上传者Id")
+    long paperUploaderId;
 
     @ApiModelProperty("上传日期")
     Date uploadDate;
 
-    @ManyToOne(optional = false)  // 多对一
-    @JoinColumn(name="paperUploaderId") // 外键
-    UserItem uploader;
+//    @ManyToOne(optional = false)  // 多对一
+//    @JoinColumn(name="paperUploaderId") // 外键
+//    UserItem uploader;
 }

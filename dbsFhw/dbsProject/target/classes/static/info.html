@@ -64,24 +64,52 @@
                     </el-card>
                 <el-row>
 
-                    <el-col>
+                    <el-col span=12>
+
                         <el-card
-                                style="height:500px; width: 600px;padding-right: 20px; padding-left: 20px; padding-bottom: 20px;"
+                                style="height:500px; width: 400px;padding-right: 20px; padding-left: 20px; padding-bottom: 20px;"
                                 header="购书词云">
-                            <div id="buyerWordCloud" style="height: 300px;width: 500px"></div>
+                            <div id="buyerWordCloud" style="height: 300px;width: 400px"></div>
                         </el-card>
                     </el-col>
+                   <el-col span=12>
+                       <el-card
+                               style="height:200px; width: 400px;padding-right: 20px; padding-left: 20px; padding-bottom: 20px;"
+                               header="前20本最受欢迎图书">
+                           <div id="book_rank" style="height: 200px;width: 400px"></div>
+                       </el-card>
+                   </el-col>
+
 
                 </el-row>
             </el-tab-pane>
 
             <!--论文统计信息-->
             <el-tab-pane label="论文统计信息" name="paperInfo">
-                <el-card
-                        style="height:200px; width: 400px;padding-right: 20px; padding-left: 20px; padding-bottom: 40px;"
-                        header="论文上传贡献前10名">
-                    <div id="paper_uploader_rank_bar" style="height: 200px;width: 400px"></div>
-                </el-card>
+                <el-row>
+                    <el-col span=12>
+                        <el-card
+                                style="height:200px; width: 400px;padding-right: 20px; padding-left: 20px; padding-bottom: 40px;"
+                                header="论文上传贡献前10名">
+                            <div id="paper_uploader_rank_bar" style="height: 200px;width: 400px"></div>
+                        </el-card>
+                    </el-col>
+                    <el-col span=12>
+                        <el-card
+                                style="height:200px; width: 400px;padding-right: 20px; padding-left: 20px; padding-bottom: 40px;"
+                                header="上传者身份统计">
+                            <div id="loader_pie" style="height: 200px;width: 400px"></div>
+                        </el-card>
+                    </el-col>
+                </el-row>
+                <el-row>
+                    <el-card
+                            style="height:200px; width: 1000px;padding-right: 20px; padding-left: 20px; padding-bottom: 40px;"
+                            header="发表年份统计">
+                        <div id="paper_year" style="height: 200px;width: 1000px"></div>
+                    </el-card>
+                </el-row>
+
             </el-tab-pane>
 
             <!--用户统计信息-->
@@ -170,6 +198,6 @@
 <script src="js/jquery-1.9.1.min.js"></script>
 <script src="js/echart3.js"></script>
 <script src="js/echarts-wordcloud.js"></script>
-<script src="js/info.js"></script>
+<script src="js/info.js" type="module"></script>
 
 </html>

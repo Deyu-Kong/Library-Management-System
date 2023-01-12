@@ -59,6 +59,9 @@ public class InfoController {
         map.put("year_xAxisData",publishYear.get("xAxisData"));
         map.put("year_seriesData", publishYear.get("seriesData"));
         map.put("bookTitles",infoService.getBuyerBooks().get("bookTitles"));
+        Map<String,List<String>>bookRank=infoService.getBookRank();
+        map.put("book_xAxisData",bookRank.get("xAxisData"));
+        map.put("book_seriesData",bookRank.get("seriesData"));
         return ResponseEntity.ok(map);
     }
 
@@ -70,6 +73,11 @@ public class InfoController {
         Map<String, List<String>> uploaderRank = infoService.getUploaderRank();
         map.put("xAxisData",uploaderRank.get("xAxisData"));
         map.put("seriesData", uploaderRank.get("seriesData"));
+        Map<String, List<String>> publishYear = infoService.getPaperYear();
+        map.put("paperyear_xAxisData",publishYear.get("xAxisData"));
+        map.put("paperyear_seriesData", publishYear.get("seriesData"));
+        List<Map<String, String>> list = infoService.getUpLoaderPie();
+        map.put("loaderPie",list);
         return ResponseEntity.ok(map);
     }
 

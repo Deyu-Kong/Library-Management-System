@@ -84,7 +84,17 @@ public class InfoService {
         }
         return list;
     }
-
+    public List<Map<String, String>> getUpLoaderPie() {
+        List<Object[]> objects = queryDAO.getUpLoaderPie();
+        List<Map<String, String>> list = new ArrayList<>();
+        for (Object[] object : objects) {
+            Map<String, String> temp = new HashMap<>();
+            temp.put("value", object[0].toString());
+            temp.put("name", object[1].toString());
+            list.add(temp);
+        }
+        return list;
+    }
     public Map<String, List<String>> getUploaderRank() {
         List<Object[]> objects = queryDAO.getUploaderRank();
         return handleBarData(objects);
@@ -122,7 +132,28 @@ public class InfoService {
         map.put("seriesData", seriesData);
         return map;
     }
-
+    public Map<String, List<String>> getPaperYear(){
+        Map<String, List<String>> map = new HashMap<>();
+        List<Object[]> objects = queryDAO.getPaperYear();
+        List<String> xAxisData = new ArrayList<>();
+        List<String> seriesData = new ArrayList<>();
+        int year=1970;
+        int index=0;
+        int n=objects.size();
+        while(index<n){
+            xAxisData.add(Integer.toString(year));
+            if(objects.get(index)[1].toString().equals(Integer.toString(year))){
+                seriesData.add(objects.get(index)[0].toString());
+                index++;
+            }else{
+                seriesData.add("0");
+            }
+            year++;
+        }
+        map.put("xAxisData", xAxisData);
+        map.put("seriesData", seriesData);
+        return map;
+    }
     private Map<String, List<String>> handleBarData(List<Object[]> objects){
         Map<String, List<String>> map = new HashMap<>();
         List<String> xAxisData = new ArrayList<>();
@@ -152,6 +183,24 @@ public class InfoService {
         }
 
         map.put("bookTitles",l);
+        return map;
+    }
+    public Map<String,List<String>> getBookRank(){
+        List<Object[]> objects = queryDAO.getBuyerBooks();
+        Map<String, List<String>> map = new HashMap<>();
+        List<String> xAxisData = new ArrayList<>();
+        List<String> seriesData = new ArrayList<>();
+        int cnt=0;
+        for (Object[] object : objects) {
+            cnt++;
+            seriesData.add(object[1].toString());
+            xAxisData.add(object[0].toString());
+            if (cnt>=20){
+                break;
+            }
+        }
+        map.put("xAxisData", xAxisData);
+        map.put("seriesData", seriesData);
         return map;
     }
 
