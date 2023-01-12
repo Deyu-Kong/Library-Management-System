@@ -1,0 +1,10 @@
+
+U
+java:S1118":Add a private constructor to hide the implicit public one.(ƒé×Äýÿÿÿÿ
+N
+java:S1874"3Remove this use of "description"; it is deprecated.(ŸÙò þÿÿÿÿ
+W
+java:S1075"ARefactor your code to get this URI from a customizable parameter.(œ´° 
+>
+java:S1481"(Remove this unused "row" local variable.(Ôþ ä
+Q	java:S125"<This block of commented-out lines of code should be removed.(•ô±ñ

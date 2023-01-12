@@ -17,8 +17,7 @@ var vue = new Vue({
         PageSize:10,
         imgUrl: "https://img.alicdn.com/tfs/TB161Wer1uSBuNjy1XcXXcYjFXa-2528-1266.png",
         detailVisible: false,
-        file: "",
-        fileList: [],
+        fileContent: "",
         csvVisible: false,
         csvTitle: ""
     },
@@ -135,44 +134,38 @@ var vue = new Vue({
         },
         openCsvDialog() {
             this.file = {};
-            this.fileName = "";
             this.csvVisible = true;
             this.csvTitle = '批量添加';
             this.$refs.upload.clearFiles();
         },
-        handleChange(file) {
-            this.$refs.upload.clearFiles();
-            //赋值this.file.file = file.raw;
-            this.file={};
-            this.file.file = file.raw;
-            this.fileList = [{name: file.name, url: ""}];
-            var csvName = document.getElementById("csvName");
-            csvName.innerHTML = file.name;
+        importCsv() {
+            var path = '/books/upload?csvContent=' + this.fileContent.toString()
+            var self = this
+            axios.get(path)
+                .then(response =>{
+                    const h = this.$createElement;
+                    this.$notify({
+                        title: '提示',
+                        message: h('i', { style: 'color: teal'}, '上传成功！')
+                    });
+                })
+                .catch(e => {
+                    const h = this.$createElement;
+                    this.$notify({
+                        title: '提示',
+                        message: h('i', { style: 'color: red'}, '上传失败！')
+                    });
+                })
         },
-        async importCsv() {
-            if(Object.keys(this.file).length != 0){
-                const res = await this.$store.api.newReq('/xxx/xxxxxx/importcsv').upload(this.file);
-                if (res.code === 0) {
-                    this.csvVisible = false;
-                    //这里是导入完文件后，重新查询数据库刷新页面this.getList();
-                    this.$message({
-                        type: 'success',
-                        message: '导入成功',
-                        duration: 1500,
-                        onClose: async () => {
-                        }
-                    })
-                }
-            }else{
-                this.$message.error('上传文件不能为空');
+        readCsv(file, fileList) {
+            let reader = new FileReader();
+            reader.readAsText(file.raw, "UTF-8");
+            var $this = this
+            reader.onload = e => {
+                $this.fileContent = e.target.result
             }
-        },
-        handleSuccess(){
-
-        },
-        handleError(){
-
         }
+
     }
 })
 vue.query();

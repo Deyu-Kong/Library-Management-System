@@ -150,13 +150,11 @@
                 <el-form ref="file" label-width="120px">
                     <el-form-item>
                         <el-upload class="upload-demo" ref="upload" drag accept=".csv" action="https://jsonplaceholder.typicode.com/posts/"
-                                   :multiple="false" :limit="1" :auto-upload="false" :on-change="handleChange" :filelist="fileList">
+                                   :multiple="false" :limit="1" :auto-upload="false" :on-change="readCsv" :filelist="fileList">
                             <i class="el-icon-upload"></i>
                             <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
                             <div class="el-upload__tip" slot="tip">注意：只能上传csv文件</div>
-                            <div class="el-upload__tip" slot="tip">当前选中文件：
-                                <span id="csvName"></span>
-                            </div>
+                            <div class="el-upload__tip" slot="tip">当前选中文件：</div>
                         </el-upload>
                     </el-form-item>
                 </el-form>
