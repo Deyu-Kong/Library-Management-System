@@ -7,7 +7,7 @@
 <body>
 
 
-<div id="div_main"style="overflow: auto; height: 600px">
+<div id="div_main"style="overflow: auto; height: 100%">
     <div id="app" style="padding-right: 0; padding-left: 0; padding-bottom: 0;">
         <!--主窗口-->
         <el-card style="padding-right: 20px; padding-left: 20px; padding-bottom: 40px;" header="论文管理">
@@ -58,7 +58,7 @@
                 <el-button @click="showAdd()">添加</el-button>
                 <el-button @click="clearSiev()">清空查询条件</el-button>
             </el-row>
-            <el-table :data="papers.slice((currentPage-1)*PageSize,currentPage*PageSize)" height="600" :fit="true" :show-header="true">
+            <el-table :data="papers" height="600" :fit="true" :show-header="true">
                 <el-table-column prop="paperId" label="论文   ID">
                 </el-table-column>
                 <el-table-column prop="paperTitle" label="论文名称">

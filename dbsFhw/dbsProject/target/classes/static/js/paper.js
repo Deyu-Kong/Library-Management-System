@@ -20,57 +20,18 @@ var vue = new Vue({
     },
     methods: {
         query: function (keyword) {
-            var path = '/papers';
-            var flag=false;
-            if (this.pTitle && this.pTitle != ""){
-                path = path + "?name=" + this.pTitle
-                if(!flag) flag = true;
-            }
-            if(this.pAuthor && this.pAuthor != ""){
-                if(flag) path = path + "&&"
-                else{
-                    flag = true;
-                    path = path + "?"
-                }
-                path = path + "author=" +this.pAuthor
-            }
-            var startUpTime
-            var endUpTime
-            if(this.pUpDate && this.pUpDate != ""){
-                startUpTime = this.pUpDate[0];
-                endUpTime = this.pUpDate[1];
-                if(flag) path = path + "&&"
-                else{
-                    flag = true;
-                    path = path + "?"
-                }
-                path = path + "suploadDate=" + startUpTime + "&&euploadDate=" + endUpTime
-            }
-            if(this.pDate && this.pDate != ""){
-                startTime = this.pDate[0];
-                endTime = this.pDate[1];
-                if(flag) path = path + "&&"
-                else{
-                    flag = true;
-                    path = path + "?"
-                }
-                path = path + "spaperDate=" + startTime + "&&epaperDate=" + endTime
-            }
-            if(this.pUpId && this.pUpId != null){
-                if(flag) path = path + "&&"
-                else{
-                    flag = true;
-                    path = path + "?"
-                }
-                console.log(this.pUpId)
-                path = path + "uploader=" +this.pUpId
-            }
+            var path = '/papers?pNum=' + this.currentPage + "&&pSize=" + this.PageSize
+            if (this.pTitle && this.pTitle != "") path = path + "&&name=" + this.pTitle
+            if(this.pAuthor && this.pAuthor != "") path = path + "&&author=" + this.pAuthor
+            if(this.pUpDate && this.pUpDate != "") path = path + "&&suploadDate=" + this.pUpDate[0] + "&&euploadDate=" + this.pUpDate[1]
+            if(this.pDate && this.pDate != "") path = path + "&&spaperDate=" + this.pDate[0] + "&&epaperDate=" + this.pDate[1]
+            if(this.pUpId && this.pUpId != null) path = path + "&&uploader=" +this.pUpId
 
             var self = this
             axios.get(path)
                 .then(response =>{
-                    self.papers = response.data;
-                    this.totalCount =  this.papers.length;
+                    self.papers = response.data.content;
+                    this.totalCount =  response.data.totalElements;
                 })
                 .catch(e => self.$message.error(e.response.data))
             this.currentPage = 1
@@ -112,11 +73,13 @@ var vue = new Vue({
             this.PageSize=val
             // 注意：在改变每页显示的条数时，要将页码显示到第一页
             this.currentPage=1
+            this.query()
         },
         // 显示第几页
         handleCurrentChange(val) {
             // 改变默认的页数
             this.currentPage=val
+            this.query()
         },
         clearSiev(){
             this.pTitle = ""

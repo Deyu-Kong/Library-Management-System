@@ -7,6 +7,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -41,11 +42,12 @@ public class PaperController {
     // get: localhost:8088/papers?name=作业&&complete=true
     @ApiOperation("根据条件查询论文")
     @GetMapping("")
-    public ResponseEntity<List<PaperItem>> findpapers(@ApiParam("论文名称")String name, @ApiParam("发表日期(起)") Date spaperDate,
+    public ResponseEntity<Page<PaperItem>> findpapers(@ApiParam("论文名称")String name, @ApiParam("发表日期(起)") Date spaperDate,
                                                       @ApiParam("发表日期(止)") Date epaperDate,@ApiParam("作者")String author,
                                                       @ApiParam("上传者")Long uploader, @ApiParam("上传日期(起)")Date suploadDate,
-                                                      @ApiParam("上传日期(止)") Date euploadDate){
-        List<PaperItem> result = paperService.findPapers(name, spaperDate,epaperDate, author, uploader, suploadDate,euploadDate);
+                                                      @ApiParam("上传日期(止)") Date euploadDate,
+                                                      @ApiParam("当前页号")Integer pNum, @ApiParam("页面大小")Integer pSize){
+        Page<PaperItem> result = paperService.findPapers(name, spaperDate,epaperDate, author, uploader, suploadDate,euploadDate, pNum, pSize);
         return ResponseEntity.ok(result);
     }
 

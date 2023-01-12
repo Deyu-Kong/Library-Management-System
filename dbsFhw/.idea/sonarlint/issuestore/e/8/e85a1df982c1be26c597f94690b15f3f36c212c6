@@ -1,5 +1,8 @@
 
-{
-java:S1488A"^Immediately return this expression instead of assigning it to the temporary variable "result".(½…ÇÀ8ïïœÚ0
+X	java:S107+"<Method has 9 parameters, which is greater than 7 authorized.(æÒıê8êŸË»Ú0
+€
+java:S1488H"^Immediately return this expression instead of assigning it to the temporary variable "result".(°·”¶şÿÿÿÿ8ïïœÚ0
 F
-java:S1172 ")Remove this unused method parameter "id".(œ›Ò‚8ÿïœÚ0
+java:S1172#")Remove this unused method parameter "id".(œ›Ò‚8ÿïœÚ0
+G
+java:S1905G"+Remove this unnecessary cast to "Pageable".(œñŞ18ÕêÍ»Ú0

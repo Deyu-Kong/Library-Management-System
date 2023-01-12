@@ -6,6 +6,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -40,11 +41,12 @@ public class BookController {
     // get: localhost:8088/books?name=作业&&complete=true
     @ApiOperation("根据条件查询图书")
     @GetMapping("")
-    public ResponseEntity<List<BookItem>> findbooks(@ApiParam("书籍名称")String name, @ApiParam("出版日期(起)")Date startTime,
+    public ResponseEntity<Page<BookItem>> findbooks(@ApiParam("书籍名称")String name, @ApiParam("出版日期(起)")Date startTime,
                                                     @ApiParam("出版日期(止)")Date endTime, @ApiParam("作者")String author,
                                                     @ApiParam("出版商")String publisher, @ApiParam("评分(下限)")Double ratingLow,
-                                                    @ApiParam("评分(上限)")Double ratingHigh, @ApiParam("书籍图片")String imgUrl){
-        List<BookItem> result = bookService.findBooks(name, startTime, endTime, author, publisher, ratingLow, ratingHigh, imgUrl);
+                                                    @ApiParam("评分(上限)")Double ratingHigh, @ApiParam("书籍图片")String imgUrl,
+                                                    @ApiParam("当前页号")Integer pNum, @ApiParam("页面大小")Integer pSize){
+        Page<BookItem> result = bookService.findBooks(name, startTime, endTime, author, publisher, ratingLow, ratingHigh, imgUrl, pNum, pSize);
         return ResponseEntity.ok(result);
     }
 

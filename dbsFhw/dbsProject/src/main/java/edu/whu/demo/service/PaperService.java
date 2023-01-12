@@ -3,6 +3,9 @@ package edu.whu.demo.service;
 import edu.whu.demo.dao.PaperJPARepository;
 import edu.whu.demo.entity.PaperItem;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
@@ -37,7 +40,9 @@ public class PaperService {
         paperRepository.deleteById(id);
     }
 
-    public List<PaperItem> findPapers(String paperTitle, Date spaperDate, Date epaperDate,String paperAuthor, Long paperUploaderId, Date suploadDate,Date euploadDate) {
+    public Page<PaperItem> findPapers(String paperTitle, Date spaperDate, Date epaperDate,String paperAuthor,
+                                      Long paperUploaderId, Date suploadDate,Date euploadDate,
+                                      Integer pNum, Integer pSize) {
         //动态构造查询条件
         Specification<PaperItem> specification = (root, query, criteriaBuilder) -> {
             List<Predicate> predicateList = new ArrayList<>();
@@ -62,7 +67,9 @@ public class PaperService {
             return criteriaBuilder.and(predicates);
         };
 
-        List<PaperItem> result = paperRepository.findAll(specification);
+        PageRequest pageRequest = PageRequest.of(pNum - 1, pSize);
+        Pageable pageable = (Pageable) pageRequest;
+        Page<PaperItem> result = paperRepository.findAll(specification,pageable);
         return result;
     }
 
