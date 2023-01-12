@@ -32,7 +32,7 @@
                 <el-button @click="clearSiev()">清空查询条件</el-button>
             </el-row>
             <el-table :data="buyers.slice((currentPage-1)*PageSize,currentPage*PageSize)" height="600" :fit="true" :show-header="true">
-                <el-table-column prop="buyerId" label="买书ID">
+                <el-table-column prop="buyerId" label="购书ID">
                 </el-table-column>
                 <el-table-column prop="bookId" label="图书ID">
                 </el-table-column>

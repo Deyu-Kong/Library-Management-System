@@ -39,6 +39,9 @@ public interface QueryDAO extends JpaRepository<BookItem, Long>, JpaSpecificatio
             "ORDER BY counts DESC;",nativeQuery = true)
     List<Object[]> getIdentityPie();
 
+    @Query(value ="SELECT COUNT(*)AS counts, user_identity FROM user_item,paper_item " +
+            "WHERE user_item.user_id=paper_item.paper_uploader_id GROUP BY user_identity;" ,nativeQuery = true)
+    List<Object[]> getUpLoaderPie();
     @Query(value="SELECT u.user_name,id,mcnt FROM (SELECT user_id as id,count(buyer_id) as mcnt FROM buyer_item " +
             "GROUP BY user_id HAVING mcnt >=ALL(SELECT count(buyer_id) FROM buyer_item GROUP BY user_id)) AS a, " +
             "user_item AS u WHERE u.user_id=id;"
