@@ -92,10 +92,11 @@
                     <!--                    <span v-show="!currentBook.complete">未完成</span>-->
                     <el-select v-model="currentUser.userIdentity" placeholder="请选择" @change="$forceUpdate()">
                         <el-option label="老师" value="选项一"></el-option>
+                        <el-option label="院士" value="院士"></el-option>
+                        <el-option label="教授" value="教授"></el-option>
+                        <el-option label="学生" value="学生"></el-option>
+                        <el-option label="其它" value="其它"></el-option>
 
-                        <el-option label="院士" value="选项二"></el-option>
-                        <el-option label="教授" value="选项三"></el-option>
-                        <el-option label="学生" value="选项四"></el-option>
                     </el-select>
                 </el-form-item>
                 <el-form-item style="text-align: right;">

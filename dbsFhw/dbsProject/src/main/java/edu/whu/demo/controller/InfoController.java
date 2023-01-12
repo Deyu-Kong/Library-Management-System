@@ -70,6 +70,9 @@ public class InfoController {
         Map<String, List<String>> uploaderRank = infoService.getUploaderRank();
         map.put("xAxisData",uploaderRank.get("xAxisData"));
         map.put("seriesData", uploaderRank.get("seriesData"));
+        Map<String, List<String>> publishYear = infoService.getPaperYear();
+        map.put("paperyear_xAxisData",publishYear.get("xAxisData"));
+        map.put("paperyear_seriesData", publishYear.get("seriesData"));
         return ResponseEntity.ok(map);
     }
 

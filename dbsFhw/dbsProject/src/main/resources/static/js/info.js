@@ -86,6 +86,21 @@ var vue = new Vue({
                 ],
             },
 
+            paperYearOption : {
+                xAxis: {
+                    type: 'category',
+                    data: []
+                },
+                yAxis: {
+                    type: 'value'
+                },
+                series: [
+                    {
+                        data: [],
+                        type: 'line'
+                    }
+                ]
+            },
             // user
             userName: "",
             buyCount: null,
@@ -230,6 +245,9 @@ var vue = new Vue({
                         this.UploaderRankBarOption.xAxis.data = response.data.xAxisData;
                         this.UploaderRankBarOption.series[0].data = response.data.seriesData;
                         this.chartChange("paper_uploader_rank_bar",this.UploaderRankBarOption)
+                        this.paperYearOption.xAxis.data = response.data.paperyear_xAxisData;
+                        this.paperYearOption.series[0].data = response.data.paperyear_seriesData;
+                        this.chartChange("paper_year",this.paperYearOption)
                     });
             } else if (tab.name === "userInfo") {
 
