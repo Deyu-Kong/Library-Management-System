@@ -135,6 +135,24 @@ public class InfoService {
         map.put("seriesData", seriesData);
         return map;
     }
+    public Map<String,List<Map<Object,Object>>> getBuyerBooks(){
+        Map<String,List<Map<Object,Object>>> map = new HashMap<>();
+        List<Object[]> book = queryDAO.getBuyerBooks();
+        List<Map<Object,Object>> l=new ArrayList<>();
+        int cnt=0;
+        for (Object[] object:book){
+            cnt++;
+            Map<Object,Object>mp=new HashMap<>();
+            mp.put("name",object[0].toString());
+            mp.put("value",Integer.parseInt(object[1].toString()));
+            l.add(mp);
+            if (cnt>=20){
+                break;
+            }
+        }
 
+        map.put("bookTitles",l);
+        return map;
+    }
 
 }
