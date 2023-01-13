@@ -1,6 +1,12 @@
 
-Q	java:S107("<Method has 8 parameters, which is greater than 7 authorized.(Îˆ¡€
-t
-java:S1488D"^Immediately return this expression instead of assigning it to the temporary variable "result".(€ñŒŒ
+W	java:S107,"=Method has 10 parameters, which is greater than 7 authorized.(¦ò¶Äşÿÿÿÿ
+z
+java:S1488P"^Immediately return this expression instead of assigning it to the temporary variable "result".(ÈéÍy8Ô´»Ú0
 D
-java:S1172 ")Remove this unused method parameter "id".(ÎÊ÷šùÿÿÿÿ
+java:S1172$")Remove this unused method parameter "id".(ÎÊ÷šùÿÿÿÿ
+m
+java:S3776,"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(¦ò¶Äşÿÿÿÿ
+@
+java:S1905O"+Remove this unnecessary cast to "Pageable".(œñŞ1
+c
+java:S1128	"ARemove this unused import 'org.springframework.data.domain.Sort'.(ëÿ€ëøÿÿÿÿ8œê»Ú0

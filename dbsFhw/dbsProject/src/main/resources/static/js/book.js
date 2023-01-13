@@ -23,55 +23,21 @@ var vue = new Vue({
     },
     methods: {
         query: function (bBookname,bAuthor) {
-            var path = '/books'
-            var flag = false
-            if (this.bBookname && this.bBookname != ""){
-                path = path + "?name=" + this.bBookname
-                if(!flag) flag = true;
-            }
-            if(this.bAuthor && this.bAuthor != ""){
-                if(flag) path = path + "&&"
-                else{
-                    flag = true;
-                    path = path + "?"
-                }
-                path = path + "author=" +this.bAuthor
-            }
-            var startTime
-            var endTime
-            if(this.bPublishTime && this.bPublishTime != ""){
-                startTime = this.bPublishTime[0];
-                endTime = this.bPublishTime[1];
-                if(flag) path = path + "&&"
-                else{
-                    flag = true;
-                    path = path + "?"
-                }
-                path = path + "startTime=" + startTime + "&&endTime=" + endTime
-            }
-            if(this.bPublisher && this.bPublisher != ""){
-                if(flag) path = path + "&&"
-                else{
-                    flag = true;
-                    path = path + "?"
-                }
-                path = path + "publisher=" +this.bPublisher
-            }
+            var path = '/books?pNum=' + this.currentPage + "&&pSize=" + this.PageSize
+            if (this.bBookname && this.bBookname != "") path = path + "&&name=" + this.bBookname
+            if(this.bAuthor && this.bAuthor != "") path = path + "&&author=" +this.bAuthor
+            if(this.bPublishTime && this.bPublishTime != "") path = path + "&&startTime=" + this.bPublishTime[0] + "&&endTime=" + this.bPublishTime[1]
+            if(this.bPublisher && this.bPublisher != "") path = path + "&&publisher=" +this.bPublisher
             if(this.bRateLow && this.bRateHigh && this.bRateLow != "" || this.bRateHigh != ""){
                 if(!this.bRateLow) this.bRateLow = 0
                 if(!this.bRateHigh) this.bRateHigh = 10
-                if(flag) path = path + "&&"
-                else{
-                    flag = true;
-                    path = path + "?"
-                }
-                path = path + "ratingLow=" + this.bRateLow + "&&ratingHigh=" + this.bRateHigh;
+                path = path + "&&ratingLow=" + this.bRateLow + "&&ratingHigh=" + this.bRateHigh;
             }
             var self = this
             axios.get(path)
                 .then(response =>{
-                    self.books = response.data;
-                    this.totalCount =  this.books.length;
+                    self.books = response.data.content
+                    this.totalCount =  response.data.totalElements
                 })
                 .catch(e => self.$message.error(e.response.data))
             this.currentPage = 1
@@ -111,11 +77,13 @@ var vue = new Vue({
             this.PageSize=val
             // 注意：在改变每页显示的条数时，要将页码显示到第一页
             this.currentPage=1
+            this.query()
         },
         // 显示第几页
         handleCurrentChange(val) {
             // 改变默认的页数
             this.currentPage=val
+            this.query()
         },
         showImg(row){
             this.currentBook=row

@@ -31,7 +31,7 @@
             </el-row>
             <el-row>
                 <el-form>
-                    <el-col :span="5">
+                    <el-col :span="8">
                         <el-form-item label="出版社">
                             <el-input placeholder="请输入出版社" v-model="bPublisher" size="mini" style="width: 80%"></el-input>
                         </el-form-item>
@@ -58,7 +58,7 @@
                 <el-button @click="clearSiev()">清空查询条件</el-button>
                 <el-button class="filter-item" style="margin-left: 10px;" type="primary" @click="openCsvDialog()" icon="el-icon-plus">批量添加</el-button>
             </el-row>
-            <el-table :data="books.slice((currentPage-1)*PageSize,currentPage*PageSize)" height="600" :fit="true" :show-header="true"
+            <el-table :data="books" height="600" :fit="true" :show-header="true"
                       @row-click="(row)=>showImg(row)">
                 <el-table-column prop="id" label="图书ID">
                 </el-table-column>

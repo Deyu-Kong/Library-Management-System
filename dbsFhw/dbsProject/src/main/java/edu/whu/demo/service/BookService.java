@@ -3,6 +3,10 @@ package edu.whu.demo.service;
 import edu.whu.demo.dao.BookJPARepository;
 import edu.whu.demo.entity.BookItem;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
@@ -37,7 +41,8 @@ public class BookService {
         bookRepository.deleteById(id);
     }
 
-    public List<BookItem> findBooks(String bookName, Date startDate, Date endDate, String authorName, String publisherName, Double ratingLow, Double ratingHigh, String imgUrl) {
+    public Page<BookItem> findBooks(String bookName, Date startDate, Date endDate, String authorName, String publisherName, Double ratingLow, Double ratingHigh, String imgUrl,
+                                    Integer pNum, Integer pSize) {
         //动态构造查询条件，name和complete不为null时作为条件
         Specification<BookItem> specification = (root, query, criteriaBuilder) -> {
             List<Predicate> predicateList = new ArrayList<>();
@@ -64,8 +69,15 @@ public class BookService {
             Predicate[] predicates = predicateList.toArray(new Predicate[predicateList.size()]);
             return criteriaBuilder.and(predicates);
         };
-
-        List<BookItem> result = bookRepository.findAll(specification);
+        if(pNum == null){
+            pNum = 1;
+        }
+        if(pSize == null){
+            pSize = 10;
+        }
+        PageRequest pageRequest = PageRequest.of(pNum - 1, pSize);
+        Pageable pageable = (Pageable) pageRequest;
+        Page<BookItem> result = bookRepository.findAll(specification, pageable);
         return result;
     }
 

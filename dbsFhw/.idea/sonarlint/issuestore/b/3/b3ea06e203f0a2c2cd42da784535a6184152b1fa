@@ -1,17 +1,26 @@
 
-k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(³¢Î£ÿÿÿÿÿ
-b	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(·š†‡
+r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(…§•àıÿÿÿÿ8±üÏÚ0
+r	java:S117%"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¤”İÃùÿÿÿÿ8±üÏÚ0
+b	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(·š†‡
 0
 java:S1220""Move this file to a named package.
 g
-java:S1223"LRename this method to prevent any misunderstanding or make it a constructor.(ÙØ¤Şıÿÿÿÿ
-e
-java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ÒÖ˜ª
+java:S1223"LRename this method to prevent any misunderstanding or make it a constructor.(ÙØ¤Şıÿÿÿÿ
 g
-java:S2095"LUse try-with-resources or close this "BufferedReader" in a "finally" clause.(±ŸÅûÿÿÿÿ
+java:S2095&"LUse try-with-resources or close this "BufferedReader" in a "finally" clause.(±ŸÅûÿÿÿÿ
+e
+java:S2095*"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ÒÖ˜ª
+c
+java:S1075"ARefactor your code to get this URI from a customizable parameter.(…§•àıÿÿÿÿ8şıÏÚ0
+]	java:S125"<This block of commented-out lines of code should be removed.(«±Èÿÿÿÿÿ8ÿıÏÚ0
+]	java:S125"<This block of commented-out lines of code should be removed.(«ì«Éÿÿÿÿÿ8ÿıÏÚ0
+X	java:S125"<This block of commented-out lines of code should be removed.(İõÂµ8ÿıÏÚ0
+T	java:S106""9Replace this use of System.out or System.err by a logger.(ıí}8ƒşÏÚ0
 S
-java:S1854"8Remove this useless assignment to local variable "line".(ú•ïÕşÿÿÿÿ
-\
-java:S1075"ARefactor your code to get this URI from a customizable parameter.(³¢Î£ÿÿÿÿÿ
-S	java:S106"9Replace this use of System.out or System.err by a logger.(Ÿ§Šıÿÿÿÿ
-Q	java:S125*"<This block of commented-out lines of code should be removed.(ÃÒ¸ë
+java:S1854+"8Remove this useless assignment to local variable "line".(ú•ïÕşÿÿÿÿ
+S	java:S1060"9Replace this use of System.out or System.err by a logger.(Ÿ§Šıÿÿÿÿ
+]	java:S1253"<This block of commented-out lines of code should be removed.(Ú¿ÛÀüÿÿÿÿ8¨şÏÚ0
+]	java:S125;"<This block of commented-out lines of code should be removed.(Ú¿ÛÀüÿÿÿÿ8¨şÏÚ0
+]	java:S125C"<This block of commented-out lines of code should be removed.(Ú¿ÛÀüÿÿÿÿ8¨şÏÚ0
+U	java:S106N"9Replace this use of System.out or System.err by a logger.(ƒòù‚8ªşÏÚ0
+Q	java:S125S"<This block of commented-out lines of code should be removed.(ÃÒ¸ë
