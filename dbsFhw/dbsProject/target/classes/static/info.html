@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html style="height: 100%;">
 <head>
     <meta charset="UTF-8">
     <title>统计信息</title>
@@ -8,35 +8,36 @@
         .el-card__header {
             padding: 5px 20px;
         }
-        .el-card{
+
+        .el-card {
             margin-bottom: 20px;
         }
     </style>
 </head>
-<body>
-<div id="div_main" style="overflow: auto; height: 600px">
+<body style="height: 100%;">
+<div id="div_main" style="overflow: auto; height: 100%">
     <div id="app" style="padding-right: 0; padding-left: 0; padding-bottom: 0;">
         <el-tabs v-model="activeName2" type="card" @tab-click="handleClick">
             <!--全局统计信息-->
-<!--            <el-tab-pane label="全局统计信息" name="globalInfo">-->
-<!--                <el-row>-->
-<!--                    <el-card-->
-<!--                            style="height:200px; width: 400px;padding-right: 20px; padding-left: 20px; padding-bottom: 40px;"-->
-<!--                            header="总数统计">-->
-<!--                        <ul>-->
-<!--                            <li>-->
-<!--                                图书总数：{{bookCount}}-->
-<!--                            </li>-->
-<!--                            <li>-->
-<!--                                论文总数：{{paperCount}}-->
-<!--                            </li>-->
-<!--                            <li>-->
-<!--                                用户总数：{{userCount}}-->
-<!--                            </li>-->
-<!--                        </ul>-->
-<!--                    </el-card>-->
-<!--                </el-row>-->
-<!--            </el-tab-pane>-->
+            <!--            <el-tab-pane label="全局统计信息" name="globalInfo">-->
+            <!--                <el-row>-->
+            <!--                    <el-card-->
+            <!--                            style="height:200px; width: 400px;padding-right: 20px; padding-left: 20px; padding-bottom: 40px;"-->
+            <!--                            header="总数统计">-->
+            <!--                        <ul>-->
+            <!--                            <li>-->
+            <!--                                图书总数：{{bookCount}}-->
+            <!--                            </li>-->
+            <!--                            <li>-->
+            <!--                                论文总数：{{paperCount}}-->
+            <!--                            </li>-->
+            <!--                            <li>-->
+            <!--                                用户总数：{{userCount}}-->
+            <!--                            </li>-->
+            <!--                        </ul>-->
+            <!--                    </el-card>-->
+            <!--                </el-row>-->
+            <!--            </el-tab-pane>-->
 
             <!--图书统计信息-->
             <el-tab-pane label="图书统计信息" name="bookInfo">
@@ -57,28 +58,28 @@
                         </el-card>
                     </el-col>
                 </el-row>
-                    <el-card
-                            style="height:200px; width: 1000px;padding-right: 20px; padding-left: 20px; padding-bottom: 40px;"
-                            header="图书年份统计">
-                        <div id="publish_year" style="height: 200px;width: 1000px"></div>
-                    </el-card>
+                <el-card
+                        style="height:200px; width: 927px;padding-right: 20px; padding-left: 20px; padding-bottom: 40px;"
+                        header="图书年份统计">
+                    <div id="publish_year" style="height: 200px;width: 925px"></div>
+                </el-card>
                 <el-row>
 
                     <el-col span=12>
 
                         <el-card
-                                style="height:500px; width: 400px;padding-right: 20px; padding-left: 20px; padding-bottom: 20px;"
+                                style="height:400px; width: 400px;padding-right: 20px; padding-left: 20px; padding-bottom: 20px;"
                                 header="购书词云">
-                            <div id="buyerWordCloud" style="height: 300px;width: 400px"></div>
+                            <div id="buyerWordCloud" style="height: 400px;width: 400px"></div>
                         </el-card>
                     </el-col>
-                   <el-col span=12>
-                       <el-card
-                               style="height:200px; width: 400px;padding-right: 20px; padding-left: 20px; padding-bottom: 20px;"
-                               header="前20本最受欢迎图书">
-                           <div id="book_rank" style="height: 200px;width: 400px"></div>
-                       </el-card>
-                   </el-col>
+                    <el-col span=12>
+                        <el-card
+                                style="height:250px; width: 400px;padding-right: 20px; padding-left: 20px; padding-bottom: 20px;"
+                                header="前20本最受欢迎图书">
+                            <div id="book_rank" style="height: 200px;width: 400px"></div>
+                        </el-card>
+                    </el-col>
 
 
                 </el-row>
@@ -114,23 +115,51 @@
 
             <!--用户统计信息-->
             <el-tab-pane label="用户统计信息" name="userInfo">
-                <el-row style="margin-bottom: 20px">
-                    <el-col>
-                        <el-input placeholder="请输入查询用户名" v-model="userName" size="mini" style="width: 80%">
-                            <el-button slot="append" icon="el-icon-search" @click="getUserInfo"></el-button>
-                        </el-input>
+
+                <!--统计所有用户的信息-->
+                <el-row>
+                    <el-col span=12>
+                        <el-card
+                                style="height:200px; width: 400px;padding-right: 20px; padding-left: 20px; padding-bottom: 40px;"
+                                header="用户身份统计">
+                            <div id="identity_pie" style="height: 200px;width: 400px"></div>
+                        </el-card>
                     </el-col>
-
-
+                    <el-col span=12>
+                        <el-card
+                                style="height:200px; width: 400px;padding-right: 20px; padding-left: 20px; padding-bottom: 40px;"
+                                header="买书最多用户">
+                            <ul>
+                                <li>
+                                    买书最多的人姓名：{{mname}}
+                                </li>
+                                <li>
+                                    买书最多的人id：{{mid}}
+                                </li>
+                                <li>
+                                    买书最多的人买书个数：{{mcnt}}
+                                </li>
+                            </ul>
+                        </el-card>
+                    </el-col>
                 </el-row>
-
-                <!--统计单个用户的信息-->
-                <div id="singleUserInfo" v-show="selectSingleUser">
-                    <el-row>
+                <el-row>
+                    <el-col span=12>
+                        <el-card
+                                style="height:200px; width: 400px;padding-right: 20px; padding-left: 20px; padding-bottom: 40px;"
+                                header="阅读之星">
+                            <div id="userBuyBar" style="height: 200px;width: 400px"></div>
+                        </el-card>
+                    </el-col>
+                    <!--统计单个用户的信息-->
+                    <el-col span=12>
                         <el-card
                                 style="height:200px; width: 400px;padding-right: 20px; padding-left: 20px; padding-bottom: 40px;"
                                 header="单个用户统计">
-                            <ul>
+                            <el-input placeholder="请输入查询用户名" v-model="userName" size="mini" style="width: 80%">
+                                <el-button slot="append" icon="el-icon-search" @click="getUserInfo"></el-button>
+                            </el-input>
+                            <ul v-show="selectSingleUser">
                                 <li>
                                     用户买书数：{{buyCount}}
                                 </li>
@@ -139,48 +168,9 @@
                                 </li>
                             </ul>
                         </el-card>
-                    </el-row>
-                </div>
+                    </el-col>
+                </el-row>
 
-                <!--统计所有用户的信息-->
-                <div id="allUserInfo" v-show="!selectSingleUser">
-                    <el-row>
-                        <el-col span=12>
-                            <el-card
-                                    style="height:200px; width: 400px;padding-right: 20px; padding-left: 20px; padding-bottom: 40px;"
-                                    header="用户身份统计">
-                            <div id="identity_pie" style="height: 200px;width: 400px"></div>
-                            </el-card>
-                        </el-col>
-                        <el-col span=12>
-                            <el-card
-                                    style="height:200px; width: 400px;padding-right: 20px; padding-left: 20px; padding-bottom: 40px;"
-                                    header="买书最多用户">
-                                <ul>
-                                    <li>
-                                        买书最多的人姓名：{{mname}}
-                                    </li>
-                                    <li>
-                                        买书最多的人id：{{mid}}
-                                    </li>
-                                    <li>
-                                        买书最多的人买书个数：{{mcnt}}
-                                    </li>
-                                </ul>
-                            </el-card>
-                        </el-col>
-                    </el-row>
-                    <el-row>
-                        <el-col>
-                            <el-card
-                                    style="height:200px; width: 400px;padding-right: 20px; padding-left: 20px; padding-bottom: 40px;"
-                                    header="阅读之星">
-                                <div id="userBuyBar" style="height: 200px;width: 400px"></div>
-                            </el-card>
-                        </el-col>
-                    </el-row>
-
-                </div>
             </el-tab-pane>
         </el-tabs>
     </div>
