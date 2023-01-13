@@ -21,6 +21,7 @@ import java.sql.Date;
 @ApiModel(description="论文实体")
 public class PaperItem {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @ApiModelProperty("论文ID")
     long paperId;
 

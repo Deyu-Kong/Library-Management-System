@@ -21,6 +21,7 @@ import java.util.List;
 @ApiModel(description = "用户实体")
 public class UserItem {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @ApiModelProperty("用户ID")
     long userId;
 
