@@ -63,11 +63,11 @@ var vue = new Vue({
             if (self.editMode) {
                 axios.put('/buyers/' + self.currentBuyer.buyerId, self.currentBuyer)
                     .then(response => self.query())
-                    .catch(e => self.$message.error(e.response.data))
+                    .catch(e => self.$message.error("违反外键约束，请检查图书id或用户id是否存在"))
             } else {
                 axios.post('/buyers', self.currentBuyer)
                     .then(response => self.query())
-                    .catch(e => self.$message.error(e.response.data))
+                    .catch(e => self.$message.error("违反外键约束，请检查图书id或用户id是否存在"))
             }
             this.dialogVisible = false
         },

@@ -44,7 +44,7 @@ var vue = new Vue({
             var self = this
             axios.delete('/users/' + user.userId)
                 .then(response => self.query())
-                .catch(e => self.$message.error(e.response.data))
+                .catch(e => self.$message.error("违反外键约束，请先删除改用户的买书记录与上传记录"))
         },
         showEdit: function (user) {
             this.dialogVisible = true

@@ -60,11 +60,13 @@ var vue = new Vue({
             if (self.editMode) {
                 axios.put('/papers/' + self.currentPaper.paperId, self.currentPaper)
                     .then(response => self.query())
-                    .catch(e => self.$message.error(e.response.data))
+                    .catch(function (error) {
+                        self.$message.error("违反外键约束，请检查上传者是否存在")
+                    });
             } else {
                 axios.post('/papers', self.currentPaper)
                     .then(response => self.query())
-                    .catch(e => self.$message.error(e.response.data))
+                    .catch(e => self.$message.error("违反外键约束，请检查上传者是否存在"))
             }
             this.dialogVisible = false
         },

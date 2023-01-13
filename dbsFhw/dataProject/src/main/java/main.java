@@ -25,8 +25,8 @@ public class main {
 //        String file_path = "D:\\Codes\\python\\crawler\\buyer.csv";
 //        String sql = "insert into buyer_item(buyer_id,book_id,user_id)values(?,?,?)";
 
-        String begin_index = "20000";
-        String count = "500000";
+        String begin_index = "0"; //不设置也无所谓
+        String count = "10000";
         String condaPath ="D:\\Anaconda\\Scripts";
         System.out.println(condaPath);
         Process process = Runtime.getRuntime().exec(condaPath+"\\activate.bat python && python D:\\Codes\\python\\crawler\\dbs数据\\fake_data\\fake_data.py "+begin_index+" "+count);
@@ -58,7 +58,7 @@ public class main {
     public static void handleBook() throws Exception {
         // 插入书籍信息
         String file_path = "D:\\Codes\\python\\crawler\\dbs数据\\books.csv";
-        String sql = "insert into book_item(id,book_name,publication_date,author_name,publisher_name,rating) values (?,?,?,?,?,?)";
+        String sql = "insert into book_item(book_name,publication_date,author_name,publisher_name,rating) values (?,?,?,?,?)";
 
         long start = System.currentTimeMillis();
         insertData(file_path, sql);
@@ -80,12 +80,12 @@ public class main {
             System.out.println(Arrays.toString(Arrays.stream(items).toArray()));
 
             //book
-            ps.setObject(1, items[0]);
-            ps.setObject(2, items[1]);
-            ps.setObject(3, items[2]);
-            ps.setObject(4, items[3]);
-            ps.setObject(5, items[4]);
-            ps.setObject(6, items[5]);
+            ps.setObject(1, items[1]);
+            ps.setObject(2, items[2]);
+            ps.setObject(3, items[3]);
+            ps.setObject(4, items[4]);
+            ps.setObject(5, items[5]);
+//            ps.setObject(6, items[5]);
 
             //paper
 //            ps.setObject(1, items[0]);
